@@ -1,15 +1,15 @@
-Android
+Android/Maçã
 
-Celular
+Celular (S3, iPhone, etc.)
 
-Tablet
+Tablet (Galaxy, iPad, etc.)
 
-Desktop
+Desktop (Macs)
 
 Usuário Esperto
 
 Usuário Leigo
 
-Loja de Aplicativos
+Loja de Aplicativos (App Store, Google Play)
 
-Nuvem
+Nuvem (iCloud, Google Drive)
