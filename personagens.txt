@@ -1,15 +1,93 @@
-Android/Maçã
+#Android
 
-Celular (S3, iPhone, etc.)
+* Gadgets
+	* Samsung Galaxy S III
+	* Sony Xperia Miro
+	* Kyocera Rise
+	* HTC One V
+	* Motorola DROID RAZR MAXX ou RAZR i
+	* LG Optimus
+	* Tablets
+		* Samsung Galaxy Tab 10.1
+		* Motorola XOOM
+		* Asus Nexus 7
+* Versoes OS
+	* Jellybean
+	* Ice Cream Sandwich
+	* Honeycomb
+	* Gingerbread
+	* Froyo
+	* Eclair
+	* Donut
+* **Desktop (?)**
+	* **Galaxy Nexus**
+	* **Asus EEE Pad Transformer**
+* Usuarios
+	* Developers
+		Desenvolve para Android e tem muito conhecimento do OS.
+	* Hackers
+		Faz Jailbreaks e encontra todas as formas possiveis de adicionar funcionalidades ao OS.
+	* Fanboys
+		Conhece todos os lançamentos e sempre mantem o celular e seus aplicativos atualizados.
+	* Compulsivo
+		Ja comprou dezenas de aplicativos, fechou Angry Birds com 3 estrelas e nao consegue sentar-se por 5 minutos sem pegar o celular.
+	* Indiferente
+		Pegou o primeiro celular que achou ou foi uma troca de pontos do plano. Usa o celular para ligar e as vezes mandar uma mensagem.
+	* Leigo
+		Tem dificuldade de atender ligacoes, nao consegue adicionar contatos na agenda e se perde quando chega uma mensagem
+* Aplicativos
+	* Google Play >
+	* Android Market
+* Nuvem
+	* Google Drive
 
-Tablet (Galaxy, iPad, etc.)
 
-Desktop (Macs)
+#iOS
 
-Usuário Esperto
-
-Usuário Leigo
-
-Loja de Aplicativos (App Store, Google Play)
-
-Nuvem (iCloud, Google Drive)
+* Gadgets
+	* iPhone 5
+	* iPhone 4S
+	* iPhone 4
+	* iPhone 3GS
+	* iPhone 3G
+	* iPhone
+	* **iPods**
+		Cavalaria dos iPhones?
+	* **Apple TV**
+		Idem?
+	* Tablets
+		* iPad 3 (New iPad)
+		* iPad 2
+		* iPad
+* Versoes OS
+	* iOS 6
+	* iOS 5
+	* iOS 4
+	* iOS 3
+	* iOS 2
+	* iOS 1
+* **Desktop**
+	* MacBook Air
+	* MacBook Pro
+	* Mac mini
+	* iMac
+	* Mac Pro
+	* **OSes...**
+* Usuarios
+	* Developers
+		Desenvolve para iOS e tem muito conhecimento do OS.
+	* Hackers (?)
+		Faz Jailbreaks e encontra todas as formas possiveis de adicionar funcionalidades ao OS.
+	* Fanboys
+		Conhece e espera na fila das Apple Stores para comprar todos os lançamentos e sempre mantem o celular e seus aplicativos atualizados.
+	* Compulsivo
+		Ja comprou dezenas de aplicativos, fechou Angry Birds com 3 estrelas e nao consegue sentar-se por 5 minutos sem pegar o celular.
+	* Indiferente
+		Pegou o primeiro celular que achou ou foi uma troca de pontos do plano. Usa o celular para ligar e as vezes mandar uma mensagem.
+	* Leigo
+		Tem dificuldade de atender ligacoes, nao consegue adicionar contatos na agenda e se perde quando chega uma mensagem
+* Aplicativos
+	* App Store
+	* iTunes
+* Nuvem
+	* iCloud
