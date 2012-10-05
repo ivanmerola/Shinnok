@@ -11,7 +11,7 @@
 		* Samsung Galaxy Tab 10.1
 		* Motorola XOOM
 		* Asus Nexus 7
-* Versoes OS
+* Versões OS
 	* Jellybean
 	* Ice Cream Sandwich
 	* Honeycomb
@@ -26,15 +26,15 @@
 	* Developers
 		Desenvolve para Android e tem muito conhecimento do OS.
 	* Hackers
-		Faz Jailbreaks e encontra todas as formas possiveis de adicionar funcionalidades ao OS.
+		Faz Jailbreaks e encontra todas as formas possíveis de adicionar funcionalidades ao OS.
 	* Fanboys
-		Conhece todos os lançamentos e sempre mantem o celular e seus aplicativos atualizados.
+		Conhece todos os lançamentos e sempre mantém o celular e seus aplicativos atualizados.
 	* Compulsivo
-		Ja comprou dezenas de aplicativos, fechou Angry Birds com 3 estrelas e nao consegue sentar-se por 5 minutos sem pegar o celular.
+		Ja comprou dezenas de aplicativos, fechou Angry Birds com 3 estrelas e não consegue sentar-se por 5 minutos sem pegar o celular.
 	* Indiferente
 		Pegou o primeiro celular que achou ou foi uma troca de pontos do plano. Usa o celular para ligar e as vezes mandar uma mensagem.
 	* Leigo
-		Tem dificuldade de atender ligacoes, nao consegue adicionar contatos na agenda e se perde quando chega uma mensagem
+		Tem dificuldade de atender ligações, nao consegue adicionar contatos na agenda e se perde quando chega uma mensagem.
 * Aplicativos
 	* Google Play >
 	* Android Market
@@ -44,6 +44,8 @@
 
 #iOS
 
+* Ícones
+	* Steve Jobs
 * Gadgets
 	* iPhone 5
 	* iPhone 4S
@@ -52,7 +54,7 @@
 	* iPhone 3G
 	* iPhone
 	* **iPods**
-		Cavalaria dos iPhones?
+		Cavalaria dos iPhones? (Quer dizer, uma hierarquia militar de gadgets?)
 	* **Apple TV**
 		Idem?
 	* Tablets
@@ -79,13 +81,13 @@
 	* Hackers (?)
 		Faz Jailbreaks e encontra todas as formas possiveis de adicionar funcionalidades ao OS.
 	* Fanboys
-		Conhece e espera na fila das Apple Stores para comprar todos os lançamentos e sempre mantem o celular e seus aplicativos atualizados.
+		Conhece e espera na fila das Apple Stores para comprar todos os lançamentos e sempre mantém o celular e seus aplicativos atualizados.
 	* Compulsivo
-		Ja comprou dezenas de aplicativos, fechou Angry Birds com 3 estrelas e nao consegue sentar-se por 5 minutos sem pegar o celular.
+		Já comprou dezenas de aplicativos, fechou Angry Birds com 3 estrelas e não consegue sentar-se por 5 minutos sem pegar o celular.
 	* Indiferente
 		Pegou o primeiro celular que achou ou foi uma troca de pontos do plano. Usa o celular para ligar e as vezes mandar uma mensagem.
 	* Leigo
-		Tem dificuldade de atender ligacoes, nao consegue adicionar contatos na agenda e se perde quando chega uma mensagem
+		Tem dificuldade de atender ligações, não consegue adicionar contatos na agenda e se perde quando chega uma mensagem.
 * Aplicativos
 	* App Store
 	* iTunes
