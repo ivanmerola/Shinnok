@@ -37,7 +37,8 @@
 		Tem dificuldade de atender ligações, nao consegue adicionar contatos na agenda e se perde quando chega uma mensagem.
 * Aplicativos
 	* Google Play >
-	* Android Market
+	* Android Market (G Play == A Market ???)
+	* Chrome
 * Nuvem
 	* Google Drive
 
@@ -91,5 +92,6 @@
 * Aplicativos
 	* App Store
 	* iTunes
+	* Safari
 * Nuvem
 	* iCloud
