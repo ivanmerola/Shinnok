@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Projeto Tower Defense</title>
+	<meta charset="utf-8"/>
+	<script src="js/xmlParser.js"></script>
+	<script src="js/tileEngine.js"></script>
+	<script src="js/spriteEngine.js"></script>
+	<script src="js/utils.js"></script>
+	<script>
+		var canvas, c;
+		
+		var map1, map1Name="maps/mapa1.tmx", listLayersBelow=[0,1,2], listLayersAbove=[3];;
+		
+		var character1,character1Sprite="images/characteres/android_sprite.png",
+		chr1PosX=352,chr1PosY=160,chr1Width=32,chr1Height=32;
+		
+		var npcs = [];
+		var npc,npcSprite="images/characteres/personagem1.png",
+		npcPosX=96,npcPosY=0,npcWidth=32,npcHeight=32;
+		
+		var down=false, left=false, right=false, up=false;
+		
+		function init(){
+			c = document.getElementById("tela");
+			canvas=c.getContext("2d");
+			character1=loadCharacter(chr1PosX, chr1PosY, chr1Width, chr1Height, character1Sprite, chrDir.LEFT);
+			map1=loadMap(map1Name);
+			render();
+		}
+		
+		function render(){
+			drawMap(canvas, map1,listLayersBelow);
+			for(var c=0;c<npcs.length;c++){
+				drawCharacter(canvas, npcs[c]);
+				var remove = updateNPC(npcs[c]);
+				if(remove){
+					npcs.splice(c,1);
+				}
+			}
+			drawCharacter(canvas, character1);
+			updateCharacter(character1,down,left,right,up);
+			drawMap(canvas, map1,listLayersAbove);
+			setTimeout(render,50);
+		}
+		
+		function keyDown(e){
+			if(e.keyCode==chrDir.DOWN){
+				down=true;
+			} else if(e.keyCode==chrDir.LEFT){
+				left=true;
+			} else if(e.keyCode==chrDir.RIGHT){
+				right=true;
+			} else if(e.keyCode==chrDir.UP){
+				up=true;
+			}else if(e.keyCode==71){
+				npc=loadCharacter(npcPosX, npcPosY, npcWidth, npcHeight, npcSprite, chrDir.DOWN);
+				npcs.push(npc);
+			}
+		}
+		
+		function keyUp(e){
+			if(e.keyCode==chrDir.DOWN){
+				down=false;
+			} else if(e.keyCode==chrDir.LEFT){
+				left=false;
+			} else if(e.keyCode==chrDir.RIGHT){
+				right=false;
+			} else if(e.keyCode==chrDir.UP){
+				up=false;
+			}
+		}
+		
+		window.onkeydown=keyDown;
+		window.onkeyup=keyUp;
+		window.onload=init;
+	</script>
+</head>
+<body>
+	<p>Projeto Tower Defense Info Jr:<br />
+	Setas movimentam o Android.<br />
+	'G' gera um NPC</p>
+	<canvas id="tela" width="640" height="480">
+</body>
+</html>
