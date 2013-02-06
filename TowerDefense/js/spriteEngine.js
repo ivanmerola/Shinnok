@@ -3,14 +3,6 @@
 	Autor: Fernando del Rio
 */
 
-//Representação das direções do personagem / teclas do teclado
-var chrDir = {
-	UP:38,W:87,
-	LEFT:37,A:65,
-	DOWN:40,S:83,
-	RIGHT:39,D:68
-}
-
 //Função para carregar um personagem. Parâmetro: posição (x,y) do personagem na tela, largura e altura do personagem, caminho do sprite do personagem, e direção que o personagem está olhando
 function loadCharacter(x, y, width, height, img, direction){
 	var imm=new Image();
@@ -20,13 +12,13 @@ function loadCharacter(x, y, width, height, img, direction){
 
 //Função para desenhar um personagem. Parâmetro: o canvas onde será desenhado, e o personagem que será desenhado
 function drawCharacter(canvas, character){
-	if(character.direction==chrDir.DOWN){
+	if(character.direction==keyboard.DOWN){
 		canvas.drawImage(character.image,character.imgPosition*character.chrWidth,0,character.chrWidth,character.chrHeight,character.posX,character.posY,character.chrWidth,character.chrHeight);
-	} else if(character.direction==chrDir.LEFT){
+	} else if(character.direction==keyboard.LEFT){
 		canvas.drawImage(character.image,character.imgPosition*character.chrWidth,character.chrHeight,character.chrWidth,character.chrHeight,character.posX,character.posY,character.chrWidth,character.chrHeight);
-	} else if(character.direction==chrDir.RIGHT){
+	} else if(character.direction==keyboard.RIGHT){
 		canvas.drawImage(character.image,character.imgPosition*character.chrWidth,2*character.chrHeight,character.chrWidth,character.chrHeight,character.posX,character.posY,character.chrWidth,character.chrHeight);
-	} else if(character.direction==chrDir.UP){
+	} else if(character.direction==keyboard.UP){
 		canvas.drawImage(character.image,character.imgPosition*character.chrWidth,3*character.chrHeight,character.chrWidth,character.chrHeight,character.posX,character.posY,character.chrWidth,character.chrHeight);
 	}
 }
@@ -45,22 +37,22 @@ function updateCharacter(character, keyDownPressed, keyLeftPressed, keyRightPres
 			if(!detectCharacterColision(character.posX,character.posY+5,character.chrWidth,character.chrHeight)){
 				character.posY+=5;
 			}
-			character.direction=chrDir.DOWN;
+			character.direction=keyboard.DOWN;
 		} else if(keyLeftPressed){
 			if(!detectCharacterColision(character.posX-5,character.posY,character.chrWidth,character.chrHeight)){
 				character.posX-=5;
 			}
-			character.direction=chrDir.LEFT;
+			character.direction=keyboard.LEFT;
 		} else if(keyRightPressed){
 			if(!detectCharacterColision(character.posX+5,character.posY,character.chrWidth,character.chrHeight)){
 				character.posX+=5;
 			}
-			character.direction=chrDir.RIGHT;
+			character.direction=keyboard.RIGHT;
 		} else if(keyUpPressed){
 			if(!detectCharacterColision(character.posX,character.posY-5,character.chrWidth,character.chrHeight)){
 				character.posY-=5;
 			}
-			character.direction=chrDir.UP;
+			character.direction=keyboard.UP;
 		}
 	}
 }
@@ -70,7 +62,7 @@ function detectCharacterColision(posX, posY, chrWidth, chrHeight){
 	var objectGroups = xmlDoc.getElementsByTagName("objectgroup");
 	var colision;
 	for(i=0;i<objectGroups.length;i++){
-		if(objectGroups[i].getAttribute("name")=="Colisao"){
+		if(objectGroups[i].getAttribute("name")=="Collision"){
 			colision=objectGroups[i].getElementsByTagName("object");
 			break;
 		}
@@ -90,6 +82,24 @@ function detectCharacterColision(posX, posY, chrWidth, chrHeight){
 	return hasColision;
 }
 
+//Função para obter o ponto inicial por onde sairão os personagens não controláveis. Parâmetro: arquivo xml do mapa. Retorno: a posição (x,y) do personagem na tela.
+function getNPCStartPoint(filename){
+	xmlDoc = loadXMLDoc(filename);
+	var objectGroups = xmlDoc.getElementsByTagName("objectgroup");
+	var begin=[];
+	for(i=0;i<objectGroups.length;i++){
+		if(objectGroups[i].getAttribute("name")=="StartPoint"){
+			begin=objectGroups[i].getElementsByTagName("object");
+			break;
+		}
+	}
+	posXY=[];
+	posXY[0]=parseInt(begin[0].getAttribute("x"));
+	posXY[1]=parseInt(begin[0].getAttribute("y"));
+	return posXY;
+}
+
+//Função para atualizar um personagem não controlável na tela. Parãmetro: o personagem que será atualizado.
 function updateNPC(character){
 	var remove=false;
 	if(!character.walking){
@@ -103,9 +113,9 @@ function updateNPC(character){
 	var path;
 	var end;
 	for(i=0;i<objectGroups.length;i++){
-		if(objectGroups[i].getAttribute("name")=="Caminho"){
+		if(objectGroups[i].getAttribute("name")=="Path"){
 			path=objectGroups[i].getElementsByTagName("object");
-		} else if(objectGroups[i].getAttribute("name")=="Fim"){
+		} else if(objectGroups[i].getAttribute("name")=="EndPoint"){
 			end=objectGroups[i].getElementsByTagName("object");
 		}
 	}
@@ -144,38 +154,38 @@ function updateNPC(character){
 		var R = obj.getElementsByTagName("properties")[0].getElementsByTagName("property")[2].getAttribute("value").shuffle();
 		var U = obj.getElementsByTagName("properties")[0].getElementsByTagName("property")[3].getAttribute("value").shuffle();
 		var nextDirection;
-		if(character.direction==chrDir.DOWN){
+		if(character.direction==keyboard.DOWN){
 			nextDirection=D[0];
-		} else if(character.direction==chrDir.LEFT){
+		} else if(character.direction==keyboard.LEFT){
 			nextDirection=L[0];
-		} else if(character.direction==chrDir.RIGHT){
+		} else if(character.direction==keyboard.RIGHT){
 			nextDirection=R[0];
-		} else if(character.direction==chrDir.UP){
+		} else if(character.direction==keyboard.UP){
 			nextDirection=U[0];
 		}
 		if(nextDirection=="D"){
-			character.direction=chrDir.DOWN;
+			character.direction=keyboard.DOWN;
 		} else if(nextDirection=="L"){
-			character.direction=chrDir.LEFT;
+			character.direction=keyboard.LEFT;
 		} else if(nextDirection=="R"){
-			character.direction=chrDir.RIGHT;
+			character.direction=keyboard.RIGHT;
 		} else if(nextDirection=="U"){
-			character.direction=chrDir.UP;
+			character.direction=keyboard.UP;
 		}
 	}
-	if(character.direction==chrDir.DOWN){
+	if(character.direction==keyboard.DOWN){
 		if(!detectCharacterColision(character.posX,character.posY+8,character.chrWidth,character.chrHeight)){
 			character.posY+=8;
 		}
-	} else if(character.direction==chrDir.LEFT){
+	} else if(character.direction==keyboard.LEFT){
 		if(!detectCharacterColision(character.posX-8,character.posY,character.chrWidth,character.chrHeight)){
 			character.posX-=8;
 		}
-	} else if(character.direction==chrDir.RIGHT){
+	} else if(character.direction==keyboard.RIGHT){
 		if(!detectCharacterColision(character.posX+8,character.posY,character.chrWidth,character.chrHeight)){
 			character.posX+=8;
 		}
-	} else if(character.direction==chrDir.UP){
+	} else if(character.direction==keyboard.UP){
 		if(!detectCharacterColision(character.posX,character.posY-8,character.chrWidth,character.chrHeight)){
 			character.posY-=8;
 		}
