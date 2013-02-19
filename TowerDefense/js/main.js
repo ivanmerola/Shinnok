@@ -2,7 +2,7 @@
 var canvas, c;
 
 //Configurações para mapas.
-var map1, map1Name = "maps/mapa1.tmx", listLayersBelow = [0, 1, 2], listLayersAbove = [3];
+var map1, map1Name = "maps/Fase-3-3.tmx", listLayersBelow = [0, 1, 2], listLayersAbove = [3];
 
 //Configurações pra caracteres controláveis
 var character1, character1Sprite = "images/characteres/android_sprite.png",
@@ -21,7 +21,7 @@ var down = false, left = false, right = false, up = false;
 function init() {
 	c = document.getElementById("tela");
 	canvas = c.getContext("2d");
-	character1 = loadCharacter(chr1PosX, chr1PosY, chr1Width, chr1Height, character1Sprite, keyboard.LEFT);
+	character1 = loadCharacter(chr1PosX, chr1PosY, chr1Width, chr1Height, character1Sprite, keyboard.RIGHT);
 	map1 = loadMap(map1Name);
 	render();
 }
@@ -54,7 +54,7 @@ function keyDown(e) {
 		up = true;
 	} else if (e.keyCode == keyboard.G) {
 		npcPos = getNPCStartPoint(map1Name);
-		npc = loadCharacter(npcPos[0], npcPos[1], npcWidth, npcHeight, npcSprite, keyboard.DOWN);
+		npc = loadCharacter(npcPos[0], npcPos[1], npcWidth, npcHeight, npcSprite, keyboard.RIGHT);
 		npcs.push(npc);
 	}
 }
