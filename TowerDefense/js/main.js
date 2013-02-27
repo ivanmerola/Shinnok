@@ -39,6 +39,7 @@ function render() {
 	drawCharacter(canvas, character1);
 	updateCharacter(character1, down, left, right, up);
 	drawMap(canvas, map1, listLayersAbove);
+	highlightPlaces();
 	setTimeout(render, 50);
 }
 
@@ -89,3 +90,4 @@ var keyboard = {
 window.onkeydown = keyDown;
 window.onkeyup = keyUp;
 window.onload = init;
+window.onmousemove = mouseMoved;
