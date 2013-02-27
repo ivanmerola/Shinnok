@@ -14,6 +14,9 @@ var npc, npcSprite = "images/characteres/personagem1.png",
 //npcPosX = 96, npcPosY = 0, 
 npcWidth = 32, npcHeight = 32;
 
+//Configurações para as torres
+var towers = [];
+
 //Estado das teclas direcionais. True indica tecla pressionada. False indica tecla não pressionada.
 var down = false, left = false, right = false, up = false;
 
@@ -38,8 +41,8 @@ function render() {
 	}
 	drawCharacter(canvas, character1);
 	updateCharacter(character1, down, left, right, up);
-	drawMap(canvas, map1, listLayersAbove);
 	highlightPlaces();
+	drawMap(canvas, map1, listLayersAbove);
 	setTimeout(render, 50);
 }
 

@@ -24,16 +24,39 @@ function mouseMoved(e){
 	yTileMouseOver = Math.floor((e.clientY - rect.top)/32);	//TODO : trocar 32 por uma var global de altura de tile
 }
 
+//Definição do tipo Torre
+//function tower(posX, posY, image, chrWidth, chrHeight, imgPosition){
+//	this.posX=posX;
+//	this.posY=posY;
+//	this.image=image;
+//	this.chrWidth=chrWidth;
+//	this.chrHeight=chrHeight;
+//	this.imgPosition=imgPosition;
+//}
+
+//Função para carregar uma torre 
+//Parâmetro: posição (x,y) da torre na tela, largura e altura da torre, caminho do sprite da torre
+//function loadTower(x, y, width, height, img){
+//	var imm=new Image();
+//	imm.src=img;
+//	return new Character(x,y,imm,width,height,1,direction,false);
+//}
+
 function highlightPlaces() {
 	if (mouseInside) {
 		detect();
 		if (placeOk) {
+			
 			canvas.fillStyle = "rgba(0,200,0,0.5)";
+			
+			
 		} else {
 			canvas.fillStyle = "rgba(200,0,0,0.5)";
 		}
 		canvas.fillRect((xTileMouseOver-(Math.floor(towerWidth/2)))*32, 
 						(yTileMouseOver-(Math.floor(towerHeight/2)))*32, towerWidth*32, towerHeight*32); //TODO : trocar 32 por vars globais de tile
+		var towerBeingPlaced = loadCharacter(xTileMouseOver*32, (yTileMouseOver*32)-32, 32, 64, "images/characteres/android_sprite_torre.png", 40);
+		drawCharacter(canvas, towerBeingPlaced);
 	}
 }
 
