@@ -1263,8 +1263,8 @@
    </properties>
   </object>
  </objectgroup>
- <objectgroup name="StartPoint" width="20" height="15" visible="0">
-  <object x="0" y="160" width="32" height="32"/>
+ <objectgroup name="StartPoint" width="20" height="15">
+  <object x="64" y="160" width="32" height="32"/>
  </objectgroup>
  <objectgroup name="EndPoint" width="20" height="15" visible="0">
   <object x="608" y="160" width="32" height="32"/>
@@ -1332,8 +1332,9 @@
   <object x="555" y="257" width="3" height="3"/>
   <object x="590" y="255" width="3" height="3"/>
   <object x="623" y="257" width="3" height="3"/>
+  <object x="0" y="128" width="64" height="64"/>
  </objectgroup>
- <objectgroup name="NotAvailable" width="20" height="15">
+ <objectgroup name="NotAvailable" width="20" height="15" visible="0">
   <object x="0" y="160" width="640" height="32"/>
   <object x="192" y="320" width="256" height="32"/>
   <object x="193" y="163" width="30" height="317"/>
