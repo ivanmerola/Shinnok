@@ -11,8 +11,13 @@ chr1PosX = 352, chr1PosY = 160, chr1Width = 32, chr1Height = 32;
 //Configurações para caracteres não controláveis.
 var npcs = [];
 var npc, npcSprite = "images/characteres/personagem1.png",
+
 //npcPosX = 96, npcPosY = 0, 
 npcWidth = 32, npcHeight = 32;
+
+//Configurações para as torres
+var towers = [];
+var mouseClicked;
 
 //Estado das teclas direcionais. True indica tecla pressionada. False indica tecla não pressionada.
 var down = false, left = false, right = false, up = false;
@@ -29,17 +34,21 @@ function init() {
 //Função de renderização responsável pela saída de dados.
 function render() {
 	drawMap(canvas, map1, listLayersBelow);
-	for (var c = 0; c < npcs.length; c++) {
-		drawCharacter(canvas, npcs[c]);
-		var remove = updateNPC(npcs[c]);
+	for (var i = 0; i < npcs.length; i++) {
+		drawCharacter(canvas, npcs[i]);
+		var remove = updateNPC(npcs[i]);
 		if (remove) {
-			npcs.splice(c, 1);
+			npcs.splice(i, 1);
 		}
 	}
 	drawCharacter(canvas, character1);
 	updateCharacter(character1, down, left, right, up);
-	drawMap(canvas, map1, listLayersAbove);
 	highlightPlaces();
+	for (var i = 0; i < towers.length; i++) {
+		drawTower(canvas, towers[i]);
+		updateTower(towers[i]);
+	}
+	drawMap(canvas, map1, listLayersAbove);
 	setTimeout(render, 50);
 }
 
@@ -73,6 +82,14 @@ function keyUp(e) {
 	}
 }
 
+function mouseDown(e) {
+	mouseClicked = true;
+}
+
+function mouseUp(e) {
+	mouseClicked = false;
+}
+
 //Representação das teclas do teclado
 var keyboard = {
 	W:87,
@@ -91,3 +108,5 @@ window.onkeydown = keyDown;
 window.onkeyup = keyUp;
 window.onload = init;
 window.onmousemove = mouseMoved;
+window.onmousedown = mouseDown;
+window.onmouseup = mouseUp;

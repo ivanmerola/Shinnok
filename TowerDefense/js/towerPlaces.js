@@ -24,16 +24,77 @@ function mouseMoved(e){
 	yTileMouseOver = Math.floor((e.clientY - rect.top)/32);	//TODO : trocar 32 por uma var global de altura de tile
 }
 
+//Função para carregar uma torre. Parâmetro: posição (x,y), caminho da sprite, largura e altura da imagem, quantidade de frames, frame atual
+function loadTower(x, y, img, width, height, frameqty, actualframe, shooting){
+	var tower={};
+	tower.x = x;
+	tower.y = y;
+	tower.image = new Image();
+	tower.image.src = img;
+	tower.width = width;
+	tower.height = height;
+	tower.frameqty = frameqty;
+	tower.actualframe = actualframe;
+	tower.shooting = shooting;
+	return tower;
+}
+
+//Função para desenhar uma torre. Parâmetro: o canvas onde será desenhado, objeto torre que será desenhado
+function drawTower(canvas, tower){
+	canvas.drawImage(tower.image, tower.actualframe*tower.width, 0 , tower.width, tower.height, tower.x, tower.y, tower.width, tower.height);
+}
+
+function updateTower(tower){
+	if(tower.shooting){
+		if ((tower.actualframe + 1) == tower.frameqty) {
+			tower.actualframe = 0;
+		} else {
+			tower.actualframe++;
+		}
+	} 
+}
+
 function highlightPlaces() {
 	if (mouseInside) {
+		var tower = loadTower(xTileMouseOver*32, (yTileMouseOver*32)-32, "images/towers/torre-2-3.png", 32, 63, 7, 0, true);
 		detect();
-		if (placeOk) {
+		if (placeOk) {			
 			canvas.fillStyle = "rgba(0,200,0,0.5)";
+			canvas.fillRect((xTileMouseOver-(Math.floor(towerWidth/2)))*32, 
+						(yTileMouseOver-(Math.floor(towerHeight/2)))*32, towerWidth*32, towerHeight*32); //TODO : trocar 32 por vars globais de tile
+			canvas.globalAlpha = 0.8;
+			drawTower(canvas, tower);
+			canvas.globalAlpha = 1;
+			if (mouseClicked && !hasTower(tower)) {
+				towers.push(tower);
+				towerOrder();
+			}
 		} else {
 			canvas.fillStyle = "rgba(200,0,0,0.5)";
-		}
-		canvas.fillRect((xTileMouseOver-(Math.floor(towerWidth/2)))*32, 
+			canvas.fillRect((xTileMouseOver-(Math.floor(towerWidth/2)))*32, 
 						(yTileMouseOver-(Math.floor(towerHeight/2)))*32, towerWidth*32, towerHeight*32); //TODO : trocar 32 por vars globais de tile
+		}	
+	}
+}
+
+function hasTower(tw){
+	for (var i = 0; i < towers.length; i++) {
+		if (towers[i].x == tw.x && towers[i].y == tw.y) {
+			return true;
+		}
+	}
+	return false;
+}
+
+function towerOrder(){
+	for (var i = 0; i < towers.length; i++) {
+		for (var j = 0; j < i; j++) {
+			if (towers[i].y < towers[j].y) {
+				var aux = towers[i];
+				towers[i] = towers[j];
+				towers[j] = aux;
+			}
+		}
 	}
 }
 
