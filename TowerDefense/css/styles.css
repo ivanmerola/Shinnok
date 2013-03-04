@@ -1,0 +1,15 @@
+#page{
+	width:880px;
+	height:560px;
+}
+
+#text{
+	width:220px;
+	height:560px;
+	padding-left:20px;
+	float:left;
+}
+
+#screen{
+	float:left;
+}

@@ -1,18 +1,48 @@
 /*
-	Biblioteca javascript para funções utilitárias
-	Fontes:
-	http://stackoverflow.com/questions/3943772/how-do-i-shuffle-the-characters-in-a-string-in-javascript
-*/
+Biblioteca javascript para funções utilitárias
+Fontes:
+http://stackoverflow.com/questions/3943772/how-do-i-shuffle-the-characters-in-a-string-in-javascript
+ */
 
 //Função para embaralhar caracteres em uma string
 String.prototype.shuffle = function () {
-    var a = this.split(""),
-        n = a.length;
-    for(var i = n - 1; i > 0; i--) {
-        var j = Math.floor(Math.random() * (i + 1));
-        var tmp = a[i];
-        a[i] = a[j];
-        a[j] = tmp;
-    }
-    return a.join("");
+	var a = this.split(""),
+	n = a.length;
+	for (var i = n - 1; i > 0; i--) {
+		var j = Math.floor(Math.random() * (i + 1));
+		var tmp = a[i];
+		a[i] = a[j];
+		a[j] = tmp;
+	}
+	return a.join("");
+}
+
+//Função para desenhar uma linha na tela. Parâmetros: ponto (x,y) inicial, ponto (x,y) final, espessura da linha, cor da linha.
+function drawLine(x0, y0, x, y, lineWidth, color) {
+	canvas.lineWidth = lineWidth;
+	canvas.strokeStyle = color;
+	canvas.beginPath();
+	canvas.moveTo(x0, y0);
+	canvas.lineTo(x, y);
+	canvas.stroke();
+}
+
+//Função para desenhar um retângulo na tela.Parâmetros: Coordenadas do retângulo (ponto (x,y), largura, altura), espessura da linha, cor da linha, valor booleano indicando se o retângulo deve ou não ser preenchido com uma cor, cor que irá preencher o retângulo.
+function drawRectangle(x, y, width, height, lineWidth, lineColor, fillRectangle, color) {
+	if (fillRectangle) {
+		canvas.fillStyle = color;
+		canvas.fillRect(x, y, width, height);
+	}
+	drawLine(x, y, x + width, y, lineWidth, lineColor);
+	drawLine(x + width, y, x + width, y + height, lineWidth, lineColor);
+	drawLine(x + width, y + height, x, y + height, lineWidth, lineColor);
+	drawLine(x, y + height, x, y, lineWidth, lineColor);
+}
+
+//Função para desenhar um texto na tela. Parâmetros: o texto, a fonte, o alinhamento do texto, a cor do texto, o ponto (x,y) onde o texto será desenhado.
+function drawText(text, font, textAlign, color, x, y) {
+	canvas.font = font;
+	canvas.textAlign = textAlign;
+	canvas.fillStyle = color;
+	canvas.fillText(text, x, y);
 }

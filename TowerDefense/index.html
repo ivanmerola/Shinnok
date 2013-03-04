@@ -3,17 +3,20 @@
 <head>
 	<title>Projeto Tower Defense</title>
 	<meta charset="utf-8"/>
-		<script src="js/xmlParser.js"></script>
-		<script src="js/tileEngine.js"></script>
-		<script src="js/spriteEngine.js"></script>
-		<script src="js/utils.js"></script>
-		<script src="js/towerPlaces.js"></script>
-		<script src="js/main.js"></script>
+	<script src="js/modernizr.js"></script>
+	<script src="js/main.js"></script>
+	<link rel="stylesheet" type="text/css" href="css/styles.css" />
 </head>
 <body>
-	<p>Projeto Tower Defense Info Jr:<br />
-	Setas movimentam o Android.<br />
-	'G' gera um NPC</p>
-	<canvas id="tela" width="640" height="480">
+	<div id="page">
+		<canvas id="screen" width="640" height="560"></canvas>
+		<div id="text">
+			<p>Projeto Shinnok<br />
+			'W', 'A', 'S', 'D' movimentam o Android.<br />
+			'ENTER' acessa uma opção no menu.<br />
+			'G' gera um NPC.<br />
+			'Clique do mouse' posiciona uma torre no mapa</p>
+		</div>
+	</div>
 </body>
 </html>
