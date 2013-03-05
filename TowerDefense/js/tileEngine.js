@@ -11,11 +11,7 @@ function loadTileset(filename) {
 	width = parseInt(xmlDoc.getElementsByTagName("image")[0].getAttribute("width"));
 	height = parseInt(xmlDoc.getElementsByTagName("image")[0].getAttribute("height"));
 	image = new Image();
-	image.src = xmlDoc.getElementsByTagName("image")[0].getAttribute("source").substring(3);
-	image.onload =
-	function () {
-		tilesetLoaded = true;
-	}
+	image.src = xmlDoc.getElementsByTagName("image")[0].getAttribute("source").substring(9);
 	return new Tileset(tileWidth, tileHeight, width, height, image);
 }
 

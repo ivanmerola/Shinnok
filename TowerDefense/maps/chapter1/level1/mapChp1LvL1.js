@@ -1,20 +1,20 @@
 /*
-Configurações e funções de desenho para o mapa do capítulo 1 level 1.
+ConfiguraÃ§Ãµes e funÃ§Ãµes de desenho para o mapa do capÃ­tulo 1 level 1.
 Autor:Fernando del Rio
  */
 
-//Variáveis para as configurações do mapa.
-var mapChp1LvL1, mapChp1LvL1Name = "maps/chapter1/level1/mapChp1LvL1.tmx", mapChp1LvL1listLayersBelow = [0, 1, 2], mapChp1LvL1listLayersAbove = [3]; //mapChp1LvL1Loaded=false;
+//VariÃ¡veis para as configuraÃ§Ãµes do mapa.
+var mapChp1LvL1, mapChp1LvL1Name = "maps/chapter1/level1/mapChp1LvL1.tmx", mapChp1LvL1listLayersBelow = [0, 1, 2], mapChp1LvL1listLayersAbove = [3];
 
-//Configurações para caracteres não controláveis.
+//ConfiguraÃ§Ãµes para caracteres nÃ£o controlÃ¡veis.
 var mapChp1LvL1Npcs = [];
 var mapChp1LvL1Npc, mapChp1LvL1NpcSprite = "images/characteres/personagem1.png",
 mapChp1LvL1NpcWidth = 32, mapChp1LvL1NpcHeight = 32;
 
-//Configurações para as torres
+//ConfiguraÃ§Ãµes para as torres
 var towers = [];
 
-//Função para inicialização do mapa.
+//FunÃ§Ã£o para inicializaÃ§Ã£o do mapa.
 function mapChp1LvL1Init() {
 	if (mapChp1LvL1 == undefined) {
 		mapChp1LvL1 = loadMap(mapChp1LvL1Name);
@@ -30,7 +30,7 @@ function mapChp1LvL1Init() {
 	}
 }
 
-//Função para desenhar o mapa.
+//FunÃ§Ã£o para desenhar o mapa.
 function mapChp1LvL1Render() {
 	drawMap(canvas, mapChp1LvL1, mapChp1LvL1listLayersBelow);
 	for (var i = 0; i < mapChp1LvL1Npcs.length; i++) {
