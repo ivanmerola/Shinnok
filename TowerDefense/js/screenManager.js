@@ -64,7 +64,7 @@ function drawGameScreen(gs){
 	} else if(gs==gameStates.chp4LvL4){
 	
 	} else if(gs==gameStates.chp4LvL5){
-	
+		
 	} else if(gs==gameStates.chp5LvL1){
 	
 	} else if(gs==gameStates.chp5LvL2){

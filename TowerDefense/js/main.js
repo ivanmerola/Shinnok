@@ -39,7 +39,7 @@ function init() {
 					c = document.getElementById("screen");
 					canvas = c.getContext("2d");
 					character1 = loadCharacter(chr1PosX, chr1PosY, chr1Width, chr1Height, character1Sprite, keyboard.LEFT, false);
-					gameState = gameStates.mainMenu; //gameStates.chp1LvL1;
+					gameState = gameStates.chp1LvL1;
 					render();
 				}
 			}
