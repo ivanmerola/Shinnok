@@ -41,10 +41,24 @@ function mapChp1LvL1Render() {
 	}
 	drawCharacter(canvas, character1);
 	updateCharacter(character1, down, left, right, up);
-	highlightPlaces();
-	for (var i = 0; i < towers.length; i++) {
-		drawTower(canvas, towers[i]);
-		updateTower(towers[i]);
+	if (towers.length == 0) {
+		highlightPlaces();
+	} else {
+		var highlight = false;
+		for (var i = 0; i < towers.length; i++) {
+			if (towers[i].y >= (yTileMouseOver) * 32) {
+				if (!highlight) {
+					highlightPlaces();
+					highlight = true;
+				}
+			}
+			drawTower(canvas, towers[i]);
+			updateTower(towers[i]);
+		}
+		if (!highlight) {
+			highlightPlaces();
+			highlight = true;
+		}
 	}
 	drawMap(canvas, mapChp1LvL1, mapChp1LvL1listLayersAbove);
 	if (!keyLocked && keyG) {
