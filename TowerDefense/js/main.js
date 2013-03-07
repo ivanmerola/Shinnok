@@ -1,14 +1,14 @@
-//Vari·veis para canvas e contexto
+//Vari√°veis para canvas e contexto
 var canvas, c;
 
 //Estado do jogo (tela atual)
 var gameState;
 
-//ConfiguraÁıes pra caracteres control·veis.
+//Configura√ß√µes pra caracteres control√°veis.
 var character1, character1Sprite = "images/characteres/android_sprite.png",
 chr1PosX = 352, chr1PosY = 160, chr1Width = 32, chr1Height = 32;
 
-//Estado de teclas utilizadas. True indica tecla pressionada. False indica tecla n„o pressionada.
+//Estado de teclas utilizadas. True indica tecla pressionada. False indica tecla n√£o pressionada.
 var down = false,
 left = false,
 right = false,
@@ -17,10 +17,16 @@ keyG = false,
 keyEnter = false;
 keyLocked = false;
 
-//Estado do mouse. True indica que o bot„o est· sendo pressionado. False indica que o bot„o n„o est· sendo pressionado
+//Tile sobre o qual paira o mouse.
+var xTileMouseOver = 0, yTileMouseOver = 0
+
+//Posi√ß√£o do mouse em rela√ß√£o ao canvas. True indica que o mouse est√° dentro do canvas. False indica que o mouse est√° fora do canvas.
+var mouseInside = false;
+
+//Estado do mouse. True indica que o bot√£o est√° sendo pressionado. False indica que o bot√£o n√£o est√° sendo pressionado
 var mouseClicked;
 
-//Primeira funÁ„o a ser executada. Utilizada para carregar os scripts, recursos e iniciar a renderizaÁ„o.
+//Primeira fun√ß√£o a ser executada. Utilizada para carregar os scripts, recursos e iniciar a renderiza√ß√£o.
 function init() {
 	Modernizr.load([{
 				load : [
@@ -39,20 +45,20 @@ function init() {
 					c = document.getElementById("screen");
 					canvas = c.getContext("2d");
 					character1 = loadCharacter(chr1PosX, chr1PosY, chr1Width, chr1Height, character1Sprite, keyboard.LEFT, false);
-					gameState = gameStates.chp1LvL1;
+					gameState = gameStates.mainMenu;
 					render();
 				}
 			}
 		]);
 }
 
-//FunÁ„o de renderizaÁ„o respons·vel pela saÌda de dados.
+//Fun√ß√£o de renderiza√ß√£o respons√°vel pela sa√≠da de dados.
 function render() {
 	drawGameScreen(gameState);
 	setTimeout(render, 50);
 }
 
-//FunÁ„o executada quando alguma tecla È pressionada.
+//Fun√ß√£o executada quando alguma tecla √© pressionada.
 function keyDown(e) {
 	if (e.keyCode == keyboard.S) {
 		down = true;
@@ -69,7 +75,7 @@ function keyDown(e) {
 	}
 }
 
-//FunÁ„o executada quando alguma tecla que est· pressionada È solta.
+//Fun√ß√£o executada quando alguma tecla que est√° pressionada √© solta.
 function keyUp(e) {
 	if (e.keyCode == keyboard.S) {
 		down = false;
@@ -92,34 +98,37 @@ function keyUp(e) {
 	}
 }
 
-//FunÁ„o executada quando um bot„o do mouse È pressionado.
+//Fun√ß√£o executada quando um bot√£o do mouse √© pressionado.
 function mouseDown(e) {
 	mouseClicked = true;
 }
 
-//FunÁ„o executada quando um bot„o do mouse, que est· sendo pressionado, È solto
+//Fun√ß√£o executada quando um bot√£o do mouse, que est√° sendo pressionado, √© solto
 function mouseUp(e) {
 	mouseClicked = false;
 }
 
-//FunÁ„o executada quando o mouse È movido.
+//Fun√ß√£o executada quando o mouse √© movido.
 function mouseMoved(e) {
 	//Filtra eventos fora do canvas
+	if(c==undefined){
+		return;
+	}
 	var rect = c.getBoundingClientRect();
-	if (e.clientX < rect.left || e.clientX > rect.right) {
+	if (e.clientX < rect.left + 2 || e.clientX > rect.right - 2) {
 		mouseInside = false;
 		return;
 	}
-	if (e.clientY < rect.top + 40 || e.clientY > rect.bottom - 40) {
+	if (e.clientY < rect.top + 42 || e.clientY > rect.bottom - 42) {
 		mouseInside = false;
 		return;
 	}
 	mouseInside = true;
 	xTileMouseOver = Math.floor((e.clientX - rect.left) / 32); //TODO : trocar 32 por uma var global de largura de tile
-	yTileMouseOver = Math.floor((e.clientY - rect.top) / 32); //TODO : trocar 32 por uma var global de altura de tile
+	yTileMouseOver = Math.floor((e.clientY - 40 - rect.top) / 32); //TODO : trocar 32 por uma var global de altura de tile
 }
 
-//RepresentaÁ„o das teclas do teclado
+//Representa√ß√£o das teclas do teclado
 var keyboard = {
 	W : 87,
 	A : 65,
@@ -133,7 +142,7 @@ var keyboard = {
 	ENTER : 13
 }
 
-//DefiniÁ„o de cÛdigos para as telas do jogo
+//Defini√ß√£o de c√≥digos para as telas do jogo
 var gameStates = {
 	mainMenu : 13,
 	chapterSelection : 14,
@@ -197,13 +206,13 @@ var gameStates = {
 	settings : 72
 }
 
-//DefiniÁ„o de cÛdigos para as opÁıes do menu principal.
+//Defini√ß√£o de c√≥digos para as op√ß√µes do menu principal.
 var mainMenuOptions = {
 	play : 1,
 	options : 2
 }
 
-//DefiniÁ„o dos eventos utilizados
+//Defini√ß√£o dos eventos utilizados
 window.onkeydown = keyDown;
 window.onkeyup = keyUp;
 window.onload = init;

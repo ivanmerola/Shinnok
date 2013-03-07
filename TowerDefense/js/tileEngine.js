@@ -72,6 +72,36 @@ function loadMap(filename) {
 	return new Map(layers);
 }
 
+//Função para obter a lista de layers que serão desenhados primeiro. Parâmetro: arquivo xml do mapa. Retorno: o vetor com os inteiros correspondentes aos layers.
+function getListLayersBelow(filename) {
+	xmlDoc = loadXMLDoc(filename);
+	var objectGroups = xmlDoc.getElementsByTagName("objectgroup");
+	for (var i = 0; i < objectGroups.length; i++) {
+		if (objectGroups[i].getAttribute("name") == "LayersBelow") {
+			var values = objectGroups[i].getElementsByTagName("properties")[0].getElementsByTagName("property")[0].getAttribute("value").split(",");
+			for (var j = 0; j < values.length; j++) {
+				values[j] = parseInt(values[j])-1;
+			}
+			return values;
+		}
+	}
+}
+
+//Função para obter a lista de layers que serão desenhados por último. Parâmetro: arquivo xml do mapa. Retorno: o vetor com os inteiros correspondentes aos layers.
+function getListLayersAbove(filename) {
+	xmlDoc = loadXMLDoc(filename);
+	var objectGroups = xmlDoc.getElementsByTagName("objectgroup");
+	for (var i = 0; i < objectGroups.length; i++) {
+		if (objectGroups[i].getAttribute("name") == "LayersAbove") {
+			var values = objectGroups[i].getElementsByTagName("properties")[0].getElementsByTagName("property")[0].getAttribute("value").split(",");
+			for (var j = 0; j < values.length; j++) {
+				values[j] = parseInt(values[j])-1;
+			}
+			return values;
+		}
+	}
+}
+
 //Definição do tipo Tileset
 function Tileset(tileWidth, tileHeight, width, height, image) {
 	this.tileWidth = tileWidth;

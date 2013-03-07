@@ -23,7 +23,7 @@ function mainMenuRender() {
 //Função para atualizar a tela.
 function mainMenuUpdate() {
 	if (!keyLocked && keyEnter && optionSelected == mainMenuOptions.play) {
-		gameState = gameStates.chp4LvL5;//gameStates.chp1LvL1;
+		gameState = gameStates.chp1LvL1;
 		keyLocked = true;
 	} else if (down) {
 		optionSelected = mainMenuOptions.options;
