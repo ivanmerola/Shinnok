@@ -1445,6 +1445,7 @@
   <object x="0" y="0" width="96" height="32"/>
   <object x="128" y="0" width="64" height="32"/>
   <object x="608" y="0" width="32" height="32"/>
+  <object x="96" y="224" width="32" height="64"/>
  </objectgroup>
  <objectgroup name="MapName" width="20" height="15">
   <properties>
