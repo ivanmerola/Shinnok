@@ -1462,4 +1462,19 @@
    <property name="value" value="1,2,3"/>
   </properties>
  </objectgroup>
+ <objectgroup name="Bits" width="20" height="15" opacity="0.9">
+  <properties>
+   <property name="value" value="1000"/>
+  </properties>
+ </objectgroup>
+ <objectgroup name="Life" width="20" height="15">
+  <properties>
+   <property name="value" value="20"/>
+  </properties>
+ </objectgroup>
+ <objectgroup name="WaveQty" width="20" height="15">
+  <properties>
+   <property name="value" value="5"/>
+  </properties>
+ </objectgroup>
 </map>

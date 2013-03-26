@@ -18,13 +18,22 @@ mapChp1LvL1TowerWidth = 32, mapChp1LvL1TowerHeight = 63,
 mapChp1LvL1TowerPlaceWidth = 1, mapChp1LvL1TowerPlaceHeight = 1,
 mapChp1LvL1TowerQtyFrames=7;
 
+//Configurações para a interface.
+
 //Função para inicialização do mapa.
+var mapChp1LvL1Bits, mapChp1LvL1Life,
+	mapChp1LvL1WaveQty;
+
+
 function mapChp1LvL1Init() {
 	if (mapChp1LvL1 == undefined) {
 		mapChp1LvL1 = loadMap(mapChp1LvL1Name);
 		var npcPos = getNPCStartPoint(mapChp1LvL1Name);
 		mapChp1LvL1Npc = loadCharacter(npcPos[0], npcPos[1], mapChp1LvL1NpcWidth, mapChp1LvL1NpcHeight, mapChp1LvL1NpcSprite, keyboard.DOWN);
 		mapChp1LvL1Tower = loadTower(0, 0, mapChp1LvL1TowerSprite, mapChp1LvL1TowerWidth, mapChp1LvL1TowerHeight, mapChp1LvL1TowerPlaceWidth, mapChp1LvL1TowerPlaceHeight, mapChp1LvL1TowerQtyFrames, false);
+		mapChp1LvL1Bits = getBits(mapChp1LvL1Name);
+		mapChp1LvL1Life = getLife(mapChp1LvL1Name);
+		mapChp1LvL1WaveQty = getWaveQty(mapChp1LvL1Name);
 		if (mapChp1LvL1 != undefined && mapChp1LvL1.layers[0].tileset.image.complete && character1 != undefined && character1.image.complete && mapChp1LvL1Npc != undefined && mapChp1LvL1Npc.image.complete && mapChp1LvL1Tower!=undefined && mapChp1LvL1Tower.image.complete) {
 			mapChp1LvL1Render();
 		} else {
@@ -67,7 +76,7 @@ function mapChp1LvL1Render() {
 		}
 	}
 	drawMap(canvas, mapChp1LvL1, getListLayersAbove(mapChp1LvL1Name));
-	drawMapInterface(mapChp1LvL1Name);
+	drawMapInterface(mapChp1LvL1Name, mapChp1LvL1Bits, mapChp1LvL1Life, mapChp1LvL1WaveQty);
 	if (!keyLocked && keyG) {
 		keyLocked = true;
 		var npcPos = getNPCStartPoint(mapChp1LvL1Name);
