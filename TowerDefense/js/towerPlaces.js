@@ -26,15 +26,17 @@ function loadTower(x, y, img, width, height, placeWidth, placeHeight, frameqty, 
 
 //Função para desenhar uma torre. Parâmetro: o canvas onde será desenhado, objeto torre que será desenhado.
 function drawTower(canvas, tower) {
+	//raio que verifica o range
+	//drawCircle(tower.x + (tower.width/2), tower.y + tower.height + 20, tower.range, "rgba(0,0,0,0.3)");
 	canvas.drawImage(tower.image, tower.actualframe * tower.width, 0, tower.width, tower.height, tower.x, tower.y + 40, tower.width, tower.height);
 }
 
 //Função para atualizar o estado de uma torre. Parâmetro: a torre que será atualizada.
 function updateTower(tower, npcs) {
 	tower.shooting = false;
-	
+
 	for (var i = 0; i < npcs.length; i++) {
-		var detected = detectNpcInRange(tower.x + (tower.width/2), tower.y + tower.height, tower.range, npcs[i].x + npcs[i].width/2, npcs[i].y + npcs[i].height/2, npcs[i].width/2);
+		var detected = detectNpcInRange(tower.x + (tower.width/2), tower.y + tower.height + 20, tower.range, npcs[i].posX + npcs[i].chrWidth/2, npcs[i].posY + npcs[i].chrHeight/2 + 40, npcs[i].chrWidth/2);
 
 		if (detected) {
 			tower.shooting = true;

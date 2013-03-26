@@ -15,9 +15,7 @@ function drawMapInterface(map, bits, life, waveQty) {
 	drawText("Vida:"+life, "25px Arial", "center", "#000", c.width/4, 25);
 	drawText("Wave:"+waveQty, "25px Arial", "center", "#000", 5*c.width/12, 25);
 	drawText(getMapName(map), "25px Arial", "center", "#000", 2*c.width/3, 25);
-	// drawText("Fase " + (Math.floor((gameState-23)/5)+1) + "-" + ((gameState-23)%5+1), "25px Arial", "center", "#000", 2*c.width/3, 25);
 	drawText("Menu", "25px Arial", "center", "#000", 11*c.width/12, 25);
-	//drawText("Menu de opções TOPO", "25px Arial", "center", "#000", 320, 25);
 	drawText("Menu de opções RODAPÉ", "25px Arial", "center", "#000", 320, 545);
 }
 
