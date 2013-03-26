@@ -1,5 +1,6 @@
 /*
 Biblioteca javascript para funções utilitárias
+Autores: Renato Carlos Rodrigues Miranda de Sá / Fernando del Rio
 Fontes:
 http://stackoverflow.com/questions/3943772/how-do-i-shuffle-the-characters-in-a-string-in-javascript
  */
@@ -45,4 +46,12 @@ function drawText(text, font, textAlign, color, x, y) {
 	canvas.textAlign = textAlign;
 	canvas.fillStyle = color;
 	canvas.fillText(text, x, y);
+}
+//Função pra desenhar circulo na tela. Parâmetros: cordenadas em x e y,raio e cor.
+function drawCircle(x,y,r,color){
+	canvas.fillStyle = color;
+    canvas.beginPath();
+    canvas.arc(x, y, r , 0, Math.PI*2, true);
+	canvas.closePath();
+	canvas.fill();
 }
