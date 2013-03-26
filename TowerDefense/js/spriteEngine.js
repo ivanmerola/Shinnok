@@ -134,6 +134,13 @@ function updateNPC(character) {
 	}
 	if (inside) {
 		character.removed = true;
+		//Verifica quantos npcs chegaram ao final e decrementa a vida
+		if (mapChp1LvL1Life > 0) {
+			mapChp1LvL1Life--;
+		} else {
+			//carrega uma tela de game over
+		}
+
 		//remove=true;
 		//return remove;
 	}

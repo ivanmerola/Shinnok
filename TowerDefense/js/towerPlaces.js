@@ -7,7 +7,7 @@ Autor: Thiago Alves / Orlando Figueiredo
 var placeOk = true;
 
 //Função para carregar uma torre. Parâmetro: posição (x,y), caminho da sprite, largura e altura da imagem, quantidade de frames, frame atual.
-function loadTower(x, y, img, width, height, placeWidth, placeHeight, frameqty, shooting) {
+function loadTower(x, y, img, width, height, placeWidth, placeHeight, frameqty, shooting, range) {
 	var tower = {};
 	tower.x = x;
 	tower.y = y;
@@ -20,6 +20,7 @@ function loadTower(x, y, img, width, height, placeWidth, placeHeight, frameqty, 
 	tower.frameqty = frameqty;
 	tower.actualframe = 0;
 	tower.shooting = shooting;
+	tower.range = range;
 	return tower;
 }
 
@@ -29,7 +30,18 @@ function drawTower(canvas, tower) {
 }
 
 //Função para atualizar o estado de uma torre. Parâmetro: a torre que será atualizada.
-function updateTower(tower) {
+function updateTower(tower, npcs) {
+	tower.shooting = false;
+	
+	for (var i = 0; i < npcs.length; i++) {
+		var detected = detectNpcInRange(tower.x + (tower.width/2), tower.y + tower.height, tower.range, npcs[i].x + npcs[i].width/2, npcs[i].y + npcs[i].height/2, npcs[i].width/2);
+
+		if (detected) {
+			tower.shooting = true;
+			break;
+		}
+	}
+
 	if (tower.shooting) {
 		if ((tower.actualframe + 1) == tower.frameqty) {
 			tower.actualframe = 0;
@@ -113,3 +125,16 @@ function detectNotAvailable(tower) {
 		}
 	}
 }
+
+//funçao que recebe x, y e o raio de uma torre, x, y e um raio de um npc e detecta se houve colisão dos raios ou não
+ function detectNpcInRange(towerx, towery, towerR, npcx, npcy, npcR) {
+ 	var distance;
+
+ 	distance = Math.sqrt(Math.pow((towerx - npcx),2) + Math.pow((towery - npcy),2));
+
+ 	if (distance <= towerR + npcR) {
+ 		return true;
+ 	} else {
+ 		return false;
+ 	}
+ }

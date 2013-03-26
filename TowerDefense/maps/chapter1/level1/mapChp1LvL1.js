@@ -16,7 +16,7 @@ var mapChp1LvL1Towers = [];
 var mapChp1LvL1Tower, mapChp1LvL1TowerSprite = "images/towers/torre-2-3invert.png",
 mapChp1LvL1TowerWidth = 32, mapChp1LvL1TowerHeight = 63,
 mapChp1LvL1TowerPlaceWidth = 1, mapChp1LvL1TowerPlaceHeight = 1,
-mapChp1LvL1TowerQtyFrames=7;
+mapChp1LvL1TowerQtyFrames=7; mapChp1LvL1Range = 50; 
 
 //Configurações para a interface.
 
@@ -30,7 +30,7 @@ function mapChp1LvL1Init() {
 		mapChp1LvL1 = loadMap(mapChp1LvL1Name);
 		var npcPos = getNPCStartPoint(mapChp1LvL1Name);
 		mapChp1LvL1Npc = loadCharacter(npcPos[0], npcPos[1], mapChp1LvL1NpcWidth, mapChp1LvL1NpcHeight, mapChp1LvL1NpcSprite, keyboard.DOWN);
-		mapChp1LvL1Tower = loadTower(0, 0, mapChp1LvL1TowerSprite, mapChp1LvL1TowerWidth, mapChp1LvL1TowerHeight, mapChp1LvL1TowerPlaceWidth, mapChp1LvL1TowerPlaceHeight, mapChp1LvL1TowerQtyFrames, false);
+		mapChp1LvL1Tower = loadTower(0, 0, mapChp1LvL1TowerSprite, mapChp1LvL1TowerWidth, mapChp1LvL1TowerHeight, mapChp1LvL1TowerPlaceWidth, mapChp1LvL1TowerPlaceHeight, mapChp1LvL1TowerQtyFrames, false, mapChp1LvL1Range);
 		mapChp1LvL1Bits = getBits(mapChp1LvL1Name);
 		mapChp1LvL1Life = getLife(mapChp1LvL1Name);
 		mapChp1LvL1WaveQty = getWaveQty(mapChp1LvL1Name);
@@ -68,7 +68,7 @@ function mapChp1LvL1Render() {
 				}
 			}
 			drawTower(canvas, mapChp1LvL1Towers[i]);
-			updateTower(mapChp1LvL1Towers[i]);
+			updateTower(mapChp1LvL1Towers[i],mapChp1LvL1Npcs);
 		}
 		if (!highlight) {
 			highlightPlaces(mapChp1LvL1Tower, mapChp1LvL1Towers);
