@@ -99,6 +99,8 @@ function getNPCStartPoint(filename) {
 	return posXY;
 }
 
+
+
 //Função para atualizar um personagem não controlável na tela. Parâmetro: o personagem que será atualizado.
 function updateNPC(character) {
 	//var remove=false;
@@ -132,18 +134,11 @@ function updateNPC(character) {
 			break;
 		}
 	}
+
 	if (inside) {
 		character.removed = true;
-		//Verifica quantos npcs chegaram ao final e decrementa a vida
-		if (mapChp1LvL1Life > 0) {
-			mapChp1LvL1Life--;
-		} else {
-			//carrega uma tela de game over
-		}
-
-		//remove=true;
-		//return remove;
 	}
+
 	inside = false;
 	for (i = 0; i < path.length; i++) {
 		obj = path[i];
@@ -198,7 +193,6 @@ function updateNPC(character) {
 			character.posY -= 8;
 		}
 	}
-	//return remove;
 }
 
 //Definição do tipo Character

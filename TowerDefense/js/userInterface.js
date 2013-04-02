@@ -31,6 +31,17 @@ function drawMenu(optionSelected) {
 	}
 }
 
+function drawGameOver(optionSelected) {
+	drawRectangle(0, 0, 640, 560, 2, "#000", true, "#FFF");
+	if (optionSelected == gameOverOptions.tryagain) {
+		drawText("Tente Novamente", "25px Arial", "center", "#B0B000", 320, 225);
+		drawText("Menu Principal", "25px Arial", "center", "#000", 320, 275);
+	} else if (optionSelected == gameOverOptions.back) {
+		drawText("Tente Novamente", "25px Arial", "center", "#000", 320, 225);
+		drawText("Menu Principal", "25px Arial", "center", "#B0B000", 320, 275);
+	}
+}
+
 function getMapName(filename){
 	xmlDoc = loadXMLDoc(filename);
 	var objectGroups = xmlDoc.getElementsByTagName("objectgroup");

@@ -17,6 +17,9 @@ keyG = false,
 keyEnter = false;
 keyLocked = false;
 
+//Level atual do jogo.
+var currentLevel;
+
 //Tile sobre o qual paira o mouse.
 var xTileMouseOver = 0, yTileMouseOver = 0
 
@@ -39,7 +42,8 @@ function init() {
 					"js/mainMenu.js",
 					"maps/chapter1/level1/mapChp1LvL1.js",
 					"js/screenManager.js",
-					"js/towerPlaces.js"
+					"js/towerPlaces.js",
+					"js/gameOverScreen.js"
 				],
 				complete : function () {
 					c = document.getElementById("screen");
@@ -203,13 +207,19 @@ var gameStates = {
 	cutScene7 : 69,
 	cutScene8 : 70,
 	cutScene9 : 71,
-	settings : 72
+	settings : 72,
+	gameOver : 73
 }
 
 //Definição de códigos para as opções do menu principal.
 var mainMenuOptions = {
 	play : 1,
 	options : 2
+}
+
+var gameOverOptions = {
+	tryagain : 1,
+	back : 2
 }
 
 //Definição dos eventos utilizados

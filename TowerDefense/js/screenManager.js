@@ -26,6 +26,7 @@ function drawGameScreen(gs){
 	} else if(gs==gameStates.levelSelection8){
 	
 	} else if(gs==gameStates.chp1LvL1){
+		currentLevel = gameStates.chp1LvL1;
 		mapChp1LvL1Init();
 	} else if(gs==gameStates.chp1LvL2){
 	
@@ -125,5 +126,7 @@ function drawGameScreen(gs){
 	
 	} else if(gs==gameStates.settings){
 	
+	} else if(gs==gameStates.gameOver){
+		gameOverRender();
 	} 
 }
