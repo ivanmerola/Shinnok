@@ -22,6 +22,7 @@ function loadTower(x, y, img, width, height, placeWidth, placeHeight, frameqty, 
 	tower.shooting = shooting;
 	tower.range = range;
 	tower.selected = selected;
+	tower.attack = 10;
 	return tower;
 }
 
@@ -39,7 +40,8 @@ function updateTower(tower, npcs) {
 		if (!npcs[i].removed) {
 			var detected = detectNpcInRange(tower.x + (tower.width / 2), tower.y + tower.height + 20, tower.range, npcs[i].posX + npcs[i].chrWidth / 2, npcs[i].posY + npcs[i].chrHeight / 2 + 40, npcs[i].chrWidth / 2);
 			if (detected) {
-				tower.shooting = true;
+				tower.shooting = true;				
+				npcs[i].life -= tower.attack;
 				break;
 			}
 		}

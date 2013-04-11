@@ -56,7 +56,7 @@ function mapChp1LvL1Render() {
 			drawCharacter(canvas, mapChp1LvL1Npcs[i]);
 			updateNPC(mapChp1LvL1Npcs[i]);
 
-			if (mapChp1LvL1Npcs[i].removed) {
+			if (mapChp1LvL1Npcs[i].removed && mapChp1LvL1Npcs[i].life > 0) {
 				if (mapChp1LvL1Life > 0) {
 					mapChp1LvL1Life--;
 				} 
@@ -70,7 +70,7 @@ function mapChp1LvL1Render() {
 		}
 	}
 	drawCharacter(canvas, character1);
-	updateCharacter(character1, down, left, right, up);
+	updateCharacter(character1, down, left, right, up);	
 	mapChp1LvL1Tower = loadTower(xTileMouseOver * 32, yTileMouseOver * 32 - 32, mapChp1LvL1TowerSprite, mapChp1LvL1TowerWidth, mapChp1LvL1TowerHeight, mapChp1LvL1TowerPlaceWidth, mapChp1LvL1TowerPlaceHeight, mapChp1LvL1TowerQtyFrames, false, mapChp1LvL1Range, false);
 	if (mapChp1LvL1Towers.length == 0) {
 		highlightPlaces(mapChp1LvL1Tower, mapChp1LvL1Towers);
@@ -98,6 +98,6 @@ function mapChp1LvL1Render() {
 		keyLocked = true;
 		var npcPos = getNPCStartPoint(mapChp1LvL1Name);
 		mapChp1LvL1Npc = loadCharacter(npcPos[0], npcPos[1], mapChp1LvL1NpcWidth, mapChp1LvL1NpcHeight, mapChp1LvL1NpcSprite, keyboard.DOWN);
-		mapChp1LvL1Npcs.push(mapChp1LvL1Npc);
+		mapChp1LvL1Npcs.push(mapChp1LvL1Npc);	
 	}
 }

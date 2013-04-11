@@ -193,6 +193,10 @@ function updateNPC(character) {
 			character.posY -= 8;
 		}
 	}
+	
+	if(character.life <= 0){
+		character.removed = true;
+	}
 }
 
 //Definição do tipo Character
@@ -205,5 +209,6 @@ function Character(posX, posY, image, chrWidth, chrHeight, imgPosition, directio
 	this.imgPosition = imgPosition;
 	this.direction = direction;
 	this.walking = walking;
-	this.removed = removed
+	this.removed = removed;
+	this.life = 1000;
 }
