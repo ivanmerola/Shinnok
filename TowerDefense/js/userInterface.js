@@ -1,10 +1,10 @@
 /*
 Biblioteca javascript utilizada para desenhar a interface de usuário
-Autores: Fernando del Rio / Thiago Alves / Orlando Figueiredo
+Autores: Fernando del Rio / Thiago Alves / Orlando Figueiredo / Samuel / Renato
  */
 
 //Função para desenhar a interface que ficará sobre o mapa de uma fase.
-function drawMapInterface(map, bits, life, waveQty) {
+function drawMapInterface(map, bits, life, waveQty, selected) {
 	drawRectangle(0, 0, 640, 40, 2, "#000", true, "#FFF");
 	drawRectangle(0, 520, 640, 40, 2, "#000", true, "#FFF");
 	drawLine(c.width/6, 0, c.width/6, 40, 2, "#000");
@@ -16,7 +16,13 @@ function drawMapInterface(map, bits, life, waveQty) {
 	drawText("Wave:"+waveQty, "25px Arial", "center", "#000", 5*c.width/12, 25);
 	drawText(getMapName(map), "25px Arial", "center", "#000", 2*c.width/3, 25);
 	drawText("Menu", "25px Arial", "center", "#000", 11*c.width/12, 25);
-	drawText("Menu de opções RODAPÉ", "25px Arial", "center", "#000", 320, 545);
+	//drawText("Menu de opções RODAPÉ", "25px Arial", "center", "#000", 320, 545);
+	if (!selected){
+		drawLine(c.width/8,520,c.width/8,560,2,"#000");
+		drawLine(c.width/2,520,c.width/2,560,2,"#000");
+		drawLine(c.width/1.5,520,c.width/1.5,560,2,"#000");
+	}	
+
 }
 
 //Função para desenhar o menu principal. Parâmetros: qual opção está selecionada.

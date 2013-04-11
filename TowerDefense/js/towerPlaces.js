@@ -1,13 +1,13 @@
 /*
 Biblioteca javascript para detectar locais disponíveis para colocar torres
-Autor: Thiago Alves / Orlando Figueiredo
+Autor: Thiago Alves / Orlando Figueiredo / Samuel / Renato
  */
 
 //Indica a possibilidade de se colocar uma torre. True uma torre pode ser colocada naquela posição. False uma torre não pode ser colocada naquela posição
 var placeOk = true;
 
 //Função para carregar uma torre. Parâmetro: posição (x,y), caminho da sprite, largura e altura da imagem, quantidade de frames, frame atual.
-function loadTower(x, y, img, width, height, placeWidth, placeHeight, frameqty, shooting, range) {
+function loadTower(x, y, img, width, height, placeWidth, placeHeight, frameqty, shooting, range, selected) {
 	var tower = {};
 	tower.x = x;
 	tower.y = y;
@@ -21,6 +21,7 @@ function loadTower(x, y, img, width, height, placeWidth, placeHeight, frameqty, 
 	tower.actualframe = 0;
 	tower.shooting = shooting;
 	tower.range = range;
+	tower.selected = selected;
 	return tower;
 }
 
@@ -34,16 +35,15 @@ function drawTower(canvas, tower) {
 //Função para atualizar o estado de uma torre. Parâmetro: a torre que será atualizada.
 function updateTower(tower, npcs) {
 	tower.shooting = false;
-
 	for (var i = 0; i < npcs.length; i++) {
-		var detected = detectNpcInRange(tower.x + (tower.width/2), tower.y + tower.height + 20, tower.range, npcs[i].posX + npcs[i].chrWidth/2, npcs[i].posY + npcs[i].chrHeight/2 + 40, npcs[i].chrWidth/2);
-
-		if (detected) {
-			tower.shooting = true;
-			break;
+		if (!npcs[i].removed) {
+			var detected = detectNpcInRange(tower.x + (tower.width / 2), tower.y + tower.height + 20, tower.range, npcs[i].posX + npcs[i].chrWidth / 2, npcs[i].posY + npcs[i].chrHeight / 2 + 40, npcs[i].chrWidth / 2);
+			if (detected) {
+				tower.shooting = true;
+				break;
+			}
 		}
 	}
-
 	if (tower.shooting) {
 		if ((tower.actualframe + 1) == tower.frameqty) {
 			tower.actualframe = 0;
@@ -128,15 +128,23 @@ function detectNotAvailable(tower) {
 	}
 }
 
-//funçao que recebe x, y e o raio de uma torre, x, y e um raio de um npc e detecta se houve colisão dos raios ou não
- function detectNpcInRange(towerx, towery, towerR, npcx, npcy, npcR) {
- 	var distance;
+//Função que recebe x, y e o raio de uma torre, x, y e um raio de um npc e detecta se houve colisão dos raios ou não
+function detectNpcInRange(towerx, towery, towerR, npcx, npcy, npcR) {
+	var distance;
+	distance = Math.sqrt(Math.pow((towerx - npcx), 2) + Math.pow((towery - npcy), 2));
+	if (distance <= towerR + npcR) {
+		return true;
+	} else {
+		return false;
+	}
+}
 
- 	distance = Math.sqrt(Math.pow((towerx - npcx),2) + Math.pow((towery - npcy),2));
-
- 	if (distance <= towerR + npcR) {
- 		return true;
- 	} else {
- 		return false;
- 	}
- }
+//Função para verificar se há uma torre slecionada. Parâmetro: vetor de torres. Retorno: True ou False.
+function detectTowerSelected(tws) {
+	for (var i = 0; i < tws.length; i++) {
+		if (tws[i].selected) {
+			return true;
+		}
+	}
+	return false;
+}
