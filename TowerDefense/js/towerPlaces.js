@@ -69,6 +69,8 @@ function highlightPlaces(tower, towers) {
 			if (mouseClicked && !hasTower(tower, towers)) {
 				towers.push(tower);
 				towerOrder(towers);
+				mouseLocked=true;
+				actualState = statesInterface.i;
 			}
 		} else {
 			canvas.fillStyle = "rgba(200,0,0,0.5)";
@@ -139,8 +141,26 @@ function detectNpcInRange(towerx, towery, towerR, npcx, npcy, npcR) {
 	}
 }
 
-//Função para verificar se há uma torre slecionada. Parâmetro: vetor de torres. Retorno: True ou False.
+
+//Função para verificar se há uma torre selecionada. Parâmetro: vetor de torres. Retorno: True ou False. c.width/5, 550
+function addTower() {
+		if (mouseClicked) {
+			if( (c.width/8<=mousePosX) && (mousePosX<=(c.width/8 + 50)) && (520<=mousePosY) && (mousePosY<=640)){
+				actualState = statesInterface.p;
+			}
+		}
+}
+
+
+//Função para verificar se há uma torre selecionada. Parâmetro: vetor de torres. Retorno: True ou False.
 function detectTowerSelected(tws) {
+	for (var i = 0; i < tws.length; i++) {
+		if (mouseClicked) {
+			if((tws[i].x<=mousePosX) && (mousePosX<=(tws[i].x + tws[i].width)) && (tws[i].y<=mousePosY) && (mousePosY<=(tws[i].y + tws[i].height))){
+				tws[i].selected=true;
+			}
+		}
+	}
 	for (var i = 0; i < tws.length; i++) {
 		if (tws[i].selected) {
 			return true;
@@ -148,3 +168,4 @@ function detectTowerSelected(tws) {
 	}
 	return false;
 }
+
