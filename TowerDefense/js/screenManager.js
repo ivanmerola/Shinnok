@@ -8,7 +8,7 @@ function drawGameScreen(gs){
 	if(gs==gameStates.mainMenu){
 		mainMenuRender();
 	} else if(gs==gameStates.chapterSelection){
-	
+		chapterSelectionRender();
 	} else if(gs==gameStates.levelSelection1){
 	
 	} else if(gs==gameStates.levelSelection2){

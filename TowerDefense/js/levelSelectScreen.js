@@ -1,6 +1,6 @@
 /*
-Funções de desenho para o menu principal.
-Autor: Fernando del Rio
+Funções de desenho para o menu de levels.
+Autor: Thiago Alves
  */
  
 //Variáveis para as configurações da tela.
@@ -24,7 +24,7 @@ function mainMenuRender() {
 //Função para atualizar a tela.
 function mainMenuUpdate() {
 	if (!keyLocked && keyEnter && mainMenuOptionSelected == mainMenuOptions.play) {
-		gameState = gameStates.chapterSelection;
+		gameState = gameStates.chp1LvL1;
 		keyLocked = true;
 	} else if (down) {
 		mainMenuOptionSelected = mainMenuOptions.options;

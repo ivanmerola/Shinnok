@@ -43,7 +43,8 @@ function init() {
 					"maps/chapter1/level1/mapChp1LvL1.js",
 					"js/screenManager.js",
 					"js/towerPlaces.js",
-					"js/gameOverScreen.js"
+					"js/gameOverScreen.js",
+					"js/chapterSelectScreen.js"
 				],
 				complete : function () {
 					c = document.getElementById("screen");
@@ -211,7 +212,7 @@ var gameStates = {
 	gameOver : 73
 }
 
-//Definição de códigos para as opções do menu principal.
+//Definição de códigos para as opções de menus.
 var mainMenuOptions = {
 	play : 1,
 	options : 2
@@ -220,6 +221,28 @@ var mainMenuOptions = {
 var gameOverOptions = {
 	tryagain : 1,
 	back : 2
+}
+
+var chapterOptions = {
+	chapter1 : 1,
+	chapter2 : 2,
+	chapter3 : 3,
+	chapter4 : 4,
+	chapter5 : 5,
+	chapter6 : 6,
+	chapter7 : 7,
+	chapter8 : 8,
+	back : 9
+}
+
+var levelOptions = {
+	level1 : 1,
+	level2 : 2,
+	level3 : 3,
+	level4 : 4,
+	level5 : 5,
+	backChapter : 6,
+	backMenu : 7
 }
 
 //Definição dos eventos utilizados
