@@ -98,7 +98,7 @@ function mapChp1LvL1Render() {
 	if(!mouseLocked){
 	var detected = detectTowerSelected(mapChp1LvL1Towers);
 	}
-	drawMapInterface(mapChp1LvL1Name, mapChp1LvL1Bits, mapChp1LvL1Life, mapChp1LvL1WaveQty, detected);
+	drawMapInterface(mapChp1LvL1Name, mapChp1LvL1Bits, mapChp1LvL1Life, mapChp1LvL1WaveQty, actualState);
 	if (!keyLocked && keyG) {
 		keyLocked = true;
 		var npcPos = getNPCStartPoint(mapChp1LvL1Name);
