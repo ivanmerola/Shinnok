@@ -82,8 +82,8 @@ function getWaveQty(filename) {
 	xmlDoc = loadXMLDoc(filename);
 	var objectGroups = xmlDoc.getElementsByTagName("objectgroup");
 	for (var i = 0; i < objectGroups.length; i++) {
-		if (objectGroups[i].getAttribute("name") == "WaveQty") {
-			return objectGroups[i].getElementsByTagName("property")[0].getAttribute("value");
+		if (objectGroups[i].getAttribute("name") == "Waves") {
+			return objectGroups[i].getElementsByTagName("properties")[0].getElementsByTagName("property")[2].getAttribute("value");
 		}
 	}
 }

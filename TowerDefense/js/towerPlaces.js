@@ -102,6 +102,7 @@ function towerOrder(tws) {
 }
 
 //Função para detectar espaços disponíveis para as torres.
+//BUG para corrigir: receber por parâmetro o arquivo de mapa, para que a função fique genérica para qualquer mapa.
 function detectNotAvailable(tower) {
 	var objectGroups = xmlDoc.getElementsByTagName("objectgroup");
 	var notAvailable;

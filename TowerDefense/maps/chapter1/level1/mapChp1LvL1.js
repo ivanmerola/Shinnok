@@ -55,7 +55,6 @@ function mapChp1LvL1Render() {
 			//drawCircle(mapChp1LvL1Npcs[i].posX + mapChp1LvL1Npcs[i].chrWidth/2, mapChp1LvL1Npcs[i].posY + 40 + mapChp1LvL1Npcs[i].chrHeight/2, mapChp1LvL1Npcs[i].chrWidth/2, "rgba(0,0,200,0.3)");
 			drawCharacter(canvas, mapChp1LvL1Npcs[i]);
 			updateNPC(mapChp1LvL1Npcs[i]);
-
 			if (mapChp1LvL1Npcs[i].removed) {
 				if (mapChp1LvL1Life > 0) {
 					mapChp1LvL1Life--;
@@ -69,8 +68,8 @@ function mapChp1LvL1Render() {
 			}
 		}
 	}
-	drawCharacter(canvas, character1);
-	updateCharacter(character1, down, left, right, up);
+	//drawCharacter(canvas, character1);
+	//updateCharacter(character1, down, left, right, up);
 	mapChp1LvL1Tower = loadTower(xTileMouseOver * 32, yTileMouseOver * 32 - 32, mapChp1LvL1TowerSprite, mapChp1LvL1TowerWidth, mapChp1LvL1TowerHeight, mapChp1LvL1TowerPlaceWidth, mapChp1LvL1TowerPlaceHeight, mapChp1LvL1TowerQtyFrames, false, mapChp1LvL1Range, false);
 	if (mapChp1LvL1Towers.length == 0) {
 		highlightPlaces(mapChp1LvL1Tower, mapChp1LvL1Towers);
@@ -94,10 +93,10 @@ function mapChp1LvL1Render() {
 	drawMap(canvas, mapChp1LvL1, getListLayersAbove(mapChp1LvL1Name));
 	var detected = detectTowerSelected(mapChp1LvL1Towers);
 	drawMapInterface(mapChp1LvL1Name, mapChp1LvL1Bits, mapChp1LvL1Life, mapChp1LvL1WaveQty, detected);
-	if (!keyLocked && keyG) {
-		keyLocked = true;
-		var npcPos = getNPCStartPoint(mapChp1LvL1Name);
-		mapChp1LvL1Npc = loadCharacter(npcPos[0], npcPos[1], mapChp1LvL1NpcWidth, mapChp1LvL1NpcHeight, mapChp1LvL1NpcSprite, keyboard.DOWN);
-		mapChp1LvL1Npcs.push(mapChp1LvL1Npc);
-	}
+	// if (!keyLocked && keyG) {
+		// keyLocked = true;
+		// var npcPos = getNPCStartPoint(mapChp1LvL1Name);
+		// mapChp1LvL1Npc = loadCharacter(npcPos[0], npcPos[1], mapChp1LvL1NpcWidth, mapChp1LvL1NpcHeight, mapChp1LvL1NpcSprite, keyboard.DOWN);
+		// mapChp1LvL1Npcs.push(mapChp1LvL1Npc);
+	// }
 }
