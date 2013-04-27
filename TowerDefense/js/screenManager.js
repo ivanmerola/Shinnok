@@ -128,5 +128,7 @@ function drawGameScreen(gs){
 	
 	} else if(gs==gameStates.gameOver){
 		gameOverRender();
-	} 
+	} else if(gs==gameStates.winScreen){
+		winScreenRender();
+	}
 }
