@@ -44,7 +44,8 @@ function init() {
 					"js/screenManager.js",
 					"js/towerPlaces.js",
 					"js/gameOverScreen.js",
-					"js/chapterSelectScreen.js"
+					"js/chapterSelectScreen.js",
+					"js/levelSelectScreen1.js"
 				],
 				complete : function () {
 					c = document.getElementById("screen");

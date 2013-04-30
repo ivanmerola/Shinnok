@@ -10,7 +10,7 @@ function drawGameScreen(gs){
 	} else if(gs==gameStates.chapterSelection){
 		chapterSelectionRender();
 	} else if(gs==gameStates.levelSelection1){
-	
+		level1SelectionRender();
 	} else if(gs==gameStates.levelSelection2){
 	
 	} else if(gs==gameStates.levelSelection3){

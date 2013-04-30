@@ -163,6 +163,82 @@ function drawChapterSelectScreen(optionSelected) {
 	}
 }
 
+function drawLevel1SelectScreen(optionSelected) {
+	drawRectangle(0, 0, 640, 560, 2, "#000", true, "#FFF");
+	switch (optionSelected) {
+
+		case levelOptions.level1 :
+			drawText("Level 1", "25px Arial", "center", "#B0B000", 320, 40);
+			drawText("Level 2", "25px Arial", "center", "#000", 320, 120);
+			drawText("Level 3", "25px Arial", "center", "#000", 320, 200);
+			drawText("Level 4", "25px Arial", "center", "#000", 320, 280);
+			drawText("Level 5", "25px Arial", "center", "#000", 320, 360);
+			drawText("Seleção de Capítulos", "25px Arial", "center", "#000", 320, 440);
+			drawText("Menu Principal", "25px Arial", "center", "#000", 320, 520);
+			break;
+
+		case levelOptions.level2 :
+			drawText("Level 1", "25px Arial", "center", "#000", 320, 40);
+			drawText("Level 2", "25px Arial", "center", "#B0B000", 320, 120);
+			drawText("Level 3", "25px Arial", "center", "#000", 320, 200);
+			drawText("Level 4", "25px Arial", "center", "#000", 320, 280);
+			drawText("Level 5", "25px Arial", "center", "#000", 320, 360);
+			drawText("Seleção de Capítulos", "25px Arial", "center", "#000", 320, 440);
+			drawText("Menu Principal", "25px Arial", "center", "#000", 320, 520);
+			break;
+
+		case levelOptions.level3 :
+			drawText("Level 1", "25px Arial", "center", "#000", 320, 40);
+			drawText("Level 2", "25px Arial", "center", "#000", 320, 120);
+			drawText("Level 3", "25px Arial", "center", "#B0B000", 320, 200);
+			drawText("Level 4", "25px Arial", "center", "#000", 320, 280);
+			drawText("Level 5", "25px Arial", "center", "#000", 320, 360);
+			drawText("Seleção de Capítulos", "25px Arial", "center", "#000", 320, 440);
+			drawText("Menu Principal", "25px Arial", "center", "#000", 320, 520);
+			break;
+
+		case levelOptions.level4 :
+			drawText("Level 1", "25px Arial", "center", "#000", 320, 40);
+			drawText("Level 2", "25px Arial", "center", "#000", 320, 120);
+			drawText("Level 3", "25px Arial", "center", "#000", 320, 200);
+			drawText("Level 4", "25px Arial", "center", "#B0B000", 320, 280);
+			drawText("Level 5", "25px Arial", "center", "#000", 320, 360);
+			drawText("Seleção de Capítulos", "25px Arial", "center", "#000", 320, 440);
+			drawText("Menu Principal", "25px Arial", "center", "#000", 320, 520);
+			break;
+
+		case levelOptions.level5 :
+			drawText("Level 1", "25px Arial", "center", "#000", 320, 40);
+			drawText("Level 2", "25px Arial", "center", "#000", 320, 120);
+			drawText("Level 3", "25px Arial", "center", "#000", 320, 200);
+			drawText("Level 4", "25px Arial", "center", "#000", 320, 280);
+			drawText("Level 5", "25px Arial", "center", "#B0B000", 320, 360);
+			drawText("Seleção de Capítulos", "25px Arial", "center", "#000", 320, 440);
+			drawText("Menu Principal", "25px Arial", "center", "#000", 320, 520);
+			break;
+
+		case levelOptions.backChapter :
+			drawText("Level 1", "25px Arial", "center", "#000", 320, 40);
+			drawText("Level 2", "25px Arial", "center", "#000", 320, 120);
+			drawText("Level 3", "25px Arial", "center", "#000", 320, 200);
+			drawText("Level 4", "25px Arial", "center", "#000", 320, 280);
+			drawText("Level 5", "25px Arial", "center", "#000", 320, 360);
+			drawText("Seleção de Capítulos", "25px Arial", "center", "#B0B000", 320, 440);
+			drawText("Menu Principal", "25px Arial", "center", "#000", 320, 520);
+			break;
+
+		case levelOptions.backMenu :
+			drawText("Level 1", "25px Arial", "center", "#000", 320, 40);
+			drawText("Level 2", "25px Arial", "center", "#000", 320, 120);
+			drawText("Level 3", "25px Arial", "center", "#000", 320, 200);
+			drawText("Level 4", "25px Arial", "center", "#000", 320, 280);
+			drawText("Level 5", "25px Arial", "center", "#000", 320, 360);
+			drawText("Seleção de Capítulos", "25px Arial", "center", "#000", 320, 440);
+			drawText("Menu Principal", "25px Arial", "center", "#B0B000", 320, 520);
+			break;
+	}
+}
+
 function getMapName(filename){
 	xmlDoc = loadXMLDoc(filename);
 	var objectGroups = xmlDoc.getElementsByTagName("objectgroup");

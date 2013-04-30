@@ -25,7 +25,10 @@ function chapterSelectionRender() {
 function chapterSelectionUpdate() {
 	//Verifica se foi apertada a tecla enter
 	if (!keyLocked && keyEnter && chapterOptionSelected == chapterOptions.chapter1) {
-		gameState = gameStates.chp1LvL1;
+		gameState = gameStates.levelSelection1;
+		keyLocked = true;
+	} else if (!keyLocked && keyEnter && chapterOptionSelected == chapterOptions.back) {
+		gameState = gameStates.mainMenu;
 		keyLocked = true;
 	//Verifica a opção atual e qual será a próxima se for apertado down
 	} else if (!keyLocked && down && chapterOptionSelected == chapterOptions.chapter1) {
@@ -52,10 +55,16 @@ function chapterSelectionUpdate() {
 	} else if (!keyLocked && down && chapterOptionSelected == chapterOptions.chapter8) {
 		chapterOptionSelected = chapterOptions.back;
 		keyLocked = true;
+	} else if (!keyLocked && down && chapterOptionSelected == chapterOptions.back) {
+		chapterOptionSelected = chapterOptions.chapter1;
+		keyLocked = true;
 	}
 
 	//Verifica a opção atual e qual será a próxima se for apertado down
-	  else if (!keyLocked && up && chapterOptionSelected == chapterOptions.chapter2) {
+	 else if (!keyLocked && up && chapterOptionSelected == chapterOptions.chapter1) {
+		chapterOptionSelected = chapterOptions.back;
+		keyLocked = true;
+	} else if (!keyLocked && up && chapterOptionSelected == chapterOptions.chapter2) {
 		chapterOptionSelected = chapterOptions.chapter1;
 		keyLocked = true;
 	} else if (!keyLocked && up && chapterOptionSelected == chapterOptions.chapter3) {
