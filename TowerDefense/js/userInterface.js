@@ -53,112 +53,112 @@ function drawChapterSelectScreen(optionSelected) {
 	switch (optionSelected) {
 
 		case chapterOptions.chapter1 :
-			drawText("Capitulo 1", "25px Arial", "center", "#B0B000", 320, 225);
-			drawText("Capitulo 2", "25px Arial", "center", "#000", 320, 275);
-			drawText("Capitulo 3", "25px Arial", "center", "#000", 320, 275);
-			drawText("Capitulo 4", "25px Arial", "center", "#000", 320, 275);
-			drawText("Capitulo 5", "25px Arial", "center", "#000", 320, 275);
-			drawText("Capitulo 6", "25px Arial", "center", "#000", 320, 275);
-			drawText("Capitulo 7", "25px Arial", "center", "#000", 320, 275);
-			drawText("Capitulo 8", "25px Arial", "center", "#000", 320, 275);
-			drawText("Menu Principal", "25px Arial", "center", "#000", 320, 275);
+			drawText("Capitulo 1", "25px Arial", "center", "#B0B000", 320, 32);
+			drawText("Capitulo 2", "25px Arial", "center", "#000", 320, 94);
+			drawText("Capitulo 3", "25px Arial", "center", "#000", 320, 156);
+			drawText("Capitulo 4", "25px Arial", "center", "#000", 320, 218);
+			drawText("Capitulo 5", "25px Arial", "center", "#000", 320, 280);
+			drawText("Capitulo 6", "25px Arial", "center", "#000", 320, 342);
+			drawText("Capitulo 7", "25px Arial", "center", "#000", 320, 404);
+			drawText("Capitulo 8", "25px Arial", "center", "#000", 320, 466);
+			drawText("Menu Principal", "25px Arial", "center", "#000", 320, 528);
 			break;
 
 		case chapterOptions.chapter2 :
-			drawText("Capitulo 1", "25px Arial", "center", "#000", 320, 225);
-			drawText("Capitulo 2", "25px Arial", "center", "#B0B000", 320, 275);
-			drawText("Capitulo 3", "25px Arial", "center", "#000", 320, 275);
-			drawText("Capitulo 4", "25px Arial", "center", "#000", 320, 275);
-			drawText("Capitulo 5", "25px Arial", "center", "#000", 320, 275);
-			drawText("Capitulo 6", "25px Arial", "center", "#000", 320, 275);
-			drawText("Capitulo 7", "25px Arial", "center", "#000", 320, 275);
-			drawText("Capitulo 8", "25px Arial", "center", "#000", 320, 275);
-			drawText("Menu Principal", "25px Arial", "center", "#000", 320, 275);
+			drawText("Capitulo 1", "25px Arial", "center", "#000", 320, 32);
+			drawText("Capitulo 2", "25px Arial", "center", "#B0B000", 320, 94);
+			drawText("Capitulo 3", "25px Arial", "center", "#000", 320, 156);
+			drawText("Capitulo 4", "25px Arial", "center", "#000", 320, 218);
+			drawText("Capitulo 5", "25px Arial", "center", "#000", 320, 280);
+			drawText("Capitulo 6", "25px Arial", "center", "#000", 320, 342);
+			drawText("Capitulo 7", "25px Arial", "center", "#000", 320, 404);
+			drawText("Capitulo 8", "25px Arial", "center", "#000", 320, 466);
+			drawText("Menu Principal", "25px Arial", "center", "#000", 320, 528);
 			break;
 
 		case chapterOptions.chapter3 :
-			drawText("Capitulo 1", "25px Arial", "center", "#000", 320, 225);
-			drawText("Capitulo 2", "25px Arial", "center", "#000", 320, 275);
-			drawText("Capitulo 3", "25px Arial", "center", "#B0B000", 320, 275);
-			drawText("Capitulo 4", "25px Arial", "center", "#000", 320, 275);
-			drawText("Capitulo 5", "25px Arial", "center", "#000", 320, 275);
-			drawText("Capitulo 6", "25px Arial", "center", "#000", 320, 275);
-			drawText("Capitulo 7", "25px Arial", "center", "#000", 320, 275);
-			drawText("Capitulo 8", "25px Arial", "center", "#000", 320, 275);
-			drawText("Menu Principal", "25px Arial", "center", "#000", 320, 275);
+			drawText("Capitulo 1", "25px Arial", "center", "#000", 320, 32);
+			drawText("Capitulo 2", "25px Arial", "center", "#000", 320, 94);
+			drawText("Capitulo 3", "25px Arial", "center", "#B0B000", 320, 156);
+			drawText("Capitulo 4", "25px Arial", "center", "#000", 320, 218);
+			drawText("Capitulo 5", "25px Arial", "center", "#000", 320, 280);
+			drawText("Capitulo 6", "25px Arial", "center", "#000", 320, 342);
+			drawText("Capitulo 7", "25px Arial", "center", "#000", 320, 404);
+			drawText("Capitulo 8", "25px Arial", "center", "#000", 320, 466);
+			drawText("Menu Principal", "25px Arial", "center", "#000", 320, 528);
 			break;
 
 		case chapterOptions.chapter4 :
-			drawText("Capitulo 1", "25px Arial", "center", "#000", 320, 225);
-			drawText("Capitulo 2", "25px Arial", "center", "#000", 320, 275);
-			drawText("Capitulo 3", "25px Arial", "center", "#000", 320, 275);
-			drawText("Capitulo 4", "25px Arial", "center", "#B0B000", 320, 275);
-			drawText("Capitulo 5", "25px Arial", "center", "#000", 320, 275);
-			drawText("Capitulo 6", "25px Arial", "center", "#000", 320, 275);
-			drawText("Capitulo 7", "25px Arial", "center", "#000", 320, 275);
-			drawText("Capitulo 8", "25px Arial", "center", "#000", 320, 275);
-			drawText("Menu Principal", "25px Arial", "center", "#000", 320, 275);
+			drawText("Capitulo 1", "25px Arial", "center", "#000", 320, 32);
+			drawText("Capitulo 2", "25px Arial", "center", "#000", 320, 94);
+			drawText("Capitulo 3", "25px Arial", "center", "#000", 320, 156);
+			drawText("Capitulo 4", "25px Arial", "center", "#B0B000", 320, 218);
+			drawText("Capitulo 5", "25px Arial", "center", "#000", 320, 280);
+			drawText("Capitulo 6", "25px Arial", "center", "#000", 320, 342);
+			drawText("Capitulo 7", "25px Arial", "center", "#000", 320, 404);
+			drawText("Capitulo 8", "25px Arial", "center", "#000", 320, 466);
+			drawText("Menu Principal", "25px Arial", "center", "#000", 320, 528);
 			break;
 
 		case chapterOptions.chapter5 :
-			drawText("Capitulo 1", "25px Arial", "center", "#000", 320, 225);
-			drawText("Capitulo 2", "25px Arial", "center", "#000", 320, 275);
-			drawText("Capitulo 3", "25px Arial", "center", "#000", 320, 275);
-			drawText("Capitulo 4", "25px Arial", "center", "#000", 320, 275);
-			drawText("Capitulo 5", "25px Arial", "center", "#B0B000", 320, 275);
-			drawText("Capitulo 6", "25px Arial", "center", "#000", 320, 275);
-			drawText("Capitulo 7", "25px Arial", "center", "#000", 320, 275);
-			drawText("Capitulo 8", "25px Arial", "center", "#000", 320, 275);
-			drawText("Menu Principal", "25px Arial", "center", "#000", 320, 275);
+			drawText("Capitulo 1", "25px Arial", "center", "#000", 320, 32);
+			drawText("Capitulo 2", "25px Arial", "center", "#000", 320, 94);
+			drawText("Capitulo 3", "25px Arial", "center", "#000", 320, 156);
+			drawText("Capitulo 4", "25px Arial", "center", "#000", 320, 218);
+			drawText("Capitulo 5", "25px Arial", "center", "#B0B000", 320, 280);
+			drawText("Capitulo 6", "25px Arial", "center", "#000", 320, 342);
+			drawText("Capitulo 7", "25px Arial", "center", "#000", 320, 404);
+			drawText("Capitulo 8", "25px Arial", "center", "#000", 320, 466);
+			drawText("Menu Principal", "25px Arial", "center", "#000", 320, 528);
 			break;
 
 		case chapterOptions.chapter6 :
-			drawText("Capitulo 1", "25px Arial", "center", "#000", 320, 225);
-			drawText("Capitulo 2", "25px Arial", "center", "#000", 320, 275);
-			drawText("Capitulo 3", "25px Arial", "center", "#000", 320, 275);
-			drawText("Capitulo 4", "25px Arial", "center", "#000", 320, 275);
-			drawText("Capitulo 5", "25px Arial", "center", "#000", 320, 275);
-			drawText("Capitulo 6", "25px Arial", "center", "#B0B000", 320, 275);
-			drawText("Capitulo 7", "25px Arial", "center", "#000", 320, 275);
-			drawText("Capitulo 8", "25px Arial", "center", "#000", 320, 275);
-			drawText("Menu Principal", "25px Arial", "center", "#000", 320, 275);
+			drawText("Capitulo 1", "25px Arial", "center", "#000", 320, 32);
+			drawText("Capitulo 2", "25px Arial", "center", "#000", 320, 94);
+			drawText("Capitulo 3", "25px Arial", "center", "#000", 320, 156);
+			drawText("Capitulo 4", "25px Arial", "center", "#000", 320, 218);
+			drawText("Capitulo 5", "25px Arial", "center", "#000", 320, 280);
+			drawText("Capitulo 6", "25px Arial", "center", "#B0B000", 320, 342);
+			drawText("Capitulo 7", "25px Arial", "center", "#000", 320, 404);
+			drawText("Capitulo 8", "25px Arial", "center", "#000", 320, 466);
+			drawText("Menu Principal", "25px Arial", "center", "#000", 320, 528);
 			break;
 
 		case chapterOptions.chapter7 :
-			drawText("Capitulo 1", "25px Arial", "center", "#000", 320, 225);
-			drawText("Capitulo 2", "25px Arial", "center", "#000", 320, 275);
-			drawText("Capitulo 3", "25px Arial", "center", "#000", 320, 275);
-			drawText("Capitulo 4", "25px Arial", "center", "#000", 320, 275);
-			drawText("Capitulo 5", "25px Arial", "center", "#000", 320, 275);
-			drawText("Capitulo 6", "25px Arial", "center", "#000", 320, 275);
-			drawText("Capitulo 7", "25px Arial", "center", "#B0B000", 320, 275);
-			drawText("Capitulo 8", "25px Arial", "center", "#000", 320, 275);
-			drawText("Menu Principal", "25px Arial", "center", "#000", 320, 275);
+			drawText("Capitulo 1", "25px Arial", "center", "#000", 320, 32);
+			drawText("Capitulo 2", "25px Arial", "center", "#000", 320, 94);
+			drawText("Capitulo 3", "25px Arial", "center", "#000", 320, 156);
+			drawText("Capitulo 4", "25px Arial", "center", "#000", 320, 218);
+			drawText("Capitulo 5", "25px Arial", "center", "#000", 320, 280);
+			drawText("Capitulo 6", "25px Arial", "center", "#000", 320, 342);
+			drawText("Capitulo 7", "25px Arial", "center", "#B0B000", 320, 404);
+			drawText("Capitulo 8", "25px Arial", "center", "#000", 320, 466);
+			drawText("Menu Principal", "25px Arial", "center", "#000", 320, 528);
 			break;
 
 		case chapterOptions.chapter8 :
-			drawText("Capitulo 1", "25px Arial", "center", "#000", 320, 225);
-			drawText("Capitulo 2", "25px Arial", "center", "#000", 320, 275);
-			drawText("Capitulo 3", "25px Arial", "center", "#000", 320, 275);
-			drawText("Capitulo 4", "25px Arial", "center", "#000", 320, 275);
-			drawText("Capitulo 5", "25px Arial", "center", "#000", 320, 275);
-			drawText("Capitulo 6", "25px Arial", "center", "#000", 320, 275);
-			drawText("Capitulo 7", "25px Arial", "center", "#000", 320, 275);
-			drawText("Capitulo 8", "25px Arial", "center", "#B0B000", 320, 275);
-			drawText("Menu Principal", "25px Arial", "center", "#000", 320, 275);
+			drawText("Capitulo 1", "25px Arial", "center", "#000", 320, 32);
+			drawText("Capitulo 2", "25px Arial", "center", "#000", 320, 94);
+			drawText("Capitulo 3", "25px Arial", "center", "#000", 320, 156);
+			drawText("Capitulo 4", "25px Arial", "center", "#000", 320, 218);
+			drawText("Capitulo 5", "25px Arial", "center", "#000", 320, 280);
+			drawText("Capitulo 6", "25px Arial", "center", "#000", 320, 342);
+			drawText("Capitulo 7", "25px Arial", "center", "#000", 320, 404);
+			drawText("Capitulo 8", "25px Arial", "center", "#B0B000", 320, 466);
+			drawText("Menu Principal", "25px Arial", "center", "#000", 320, 528);
 			break;
 
 
 		case chapterOptions.back :
-			drawText("Capitulo 1", "25px Arial", "center", "#000", 320, 225);
-			drawText("Capitulo 2", "25px Arial", "center", "#000", 320, 275);
-			drawText("Capitulo 3", "25px Arial", "center", "#000", 320, 275);
-			drawText("Capitulo 4", "25px Arial", "center", "#000", 320, 275);
-			drawText("Capitulo 5", "25px Arial", "center", "#000", 320, 275);
-			drawText("Capitulo 6", "25px Arial", "center", "#000", 320, 275);
-			drawText("Capitulo 7", "25px Arial", "center", "#000", 320, 275);
-			drawText("Capitulo 8", "25px Arial", "center", "#000", 320, 275);
-			drawText("Menu Principal", "25px Arial", "center", "#B0B000", 320, 275);
+			drawText("Capitulo 1", "25px Arial", "center", "#000", 320, 32);
+			drawText("Capitulo 2", "25px Arial", "center", "#000", 320, 94);
+			drawText("Capitulo 3", "25px Arial", "center", "#000", 320, 156);
+			drawText("Capitulo 4", "25px Arial", "center", "#000", 320, 218);
+			drawText("Capitulo 5", "25px Arial", "center", "#000", 320, 280);
+			drawText("Capitulo 6", "25px Arial", "center", "#000", 320, 342);
+			drawText("Capitulo 7", "25px Arial", "center", "#000", 320, 404);
+			drawText("Capitulo 8", "25px Arial", "center", "#000", 320, 466);
+			drawText("Menu Principal", "25px Arial", "center", "#B0B000", 320, 528);
 			break;
 	}
 }
