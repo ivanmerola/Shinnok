@@ -18,6 +18,11 @@ String.prototype.shuffle = function () {
 	return a.join("");
 }
 
+//Função para gerar um número inteiro aleatório dentro de um intervalo. Parâmetros: início e fim do intervalo. Retorno: o número aleatório gerado.
+function generateRandom(begin, end) {
+	return Math.floor(Math.random() * (end - begin + 1)) + begin;
+}
+
 //Função para desenhar uma linha na tela. Parâmetros: ponto (x,y) inicial, ponto (x,y) final, espessura da linha, cor da linha.
 function drawLine(x0, y0, x, y, lineWidth, color) {
 	canvas.lineWidth = lineWidth;
@@ -48,10 +53,10 @@ function drawText(text, font, textAlign, color, x, y) {
 	canvas.fillText(text, x, y);
 }
 //Função pra desenhar circulo na tela. Parâmetros: cordenadas em x e y,raio e cor.
-function drawCircle(x,y,r,color){
+function drawCircle(x, y, r, color) {
 	canvas.fillStyle = color;
-    canvas.beginPath();
-    canvas.arc(x, y, r , 0, Math.PI*2, true);
+	canvas.beginPath();
+	canvas.arc(x, y, r, 0, Math.PI * 2, true);
 	canvas.closePath();
 	canvas.fill();
 }

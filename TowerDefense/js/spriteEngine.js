@@ -87,19 +87,34 @@ function getNPCStartPoint(filename) {
 	xmlDoc = loadXMLDoc(filename);
 	var objectGroups = xmlDoc.getElementsByTagName("objectgroup");
 	var begin = [];
+	var value = generateRandom(1, 100);
 	for (i = 0; i < objectGroups.length; i++) {
 		if (objectGroups[i].getAttribute("name") == "StartPoint") {
 			begin = objectGroups[i].getElementsByTagName("object");
 			break;
 		}
 	}
+	for (i = 0; i < begin.length; i++) {
+		var chance = begin[i].getElementsByTagName("property");
+		var chanceBegin;
+		var chanceEnd;
+		for(j = 0; j < chance.length; j++) {
+			if(chance[j].getAttribute("name")=="chanceBegin"){
+				chanceBegin=parseInt(chance[j].getAttribute("value"));
+			}else if(chance[j].getAttribute("name")=="chanceEnd"){
+				chanceEnd=parseInt(chance[j].getAttribute("value"));
+			}
+		}
+		if ((value >= chanceBegin) && (value <= chanceEnd)) {
+			begin = begin[i];
+			break;
+		}
+	}
 	posXY = [];
-	posXY[0] = parseInt(begin[0].getAttribute("x"));
-	posXY[1] = parseInt(begin[0].getAttribute("y"));
+	posXY[0] = parseInt(begin.getAttribute("x"));
+	posXY[1] = parseInt(begin.getAttribute("y"));
 	return posXY;
 }
-
-
 
 //Função para atualizar um personagem não controlável na tela. Parâmetro: o personagem que será atualizado.
 function updateNPC(character) {
