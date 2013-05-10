@@ -4,7 +4,7 @@ Autores: Fernando del Rio / Thiago Alves / Orlando Figueiredo / Samuel / Renato
  */
 
 //Função para desenhar a interface que ficará sobre o mapa de uma fase.
-function drawMapInterface(map, bits, life, waveQty, selected) {
+function drawMapInterface(map, bits, life, actualWave, waveQty, selected) {
 	drawRectangle(0, 0, 640, 40, 2, "#000", true, "#FFF");
 	drawRectangle(0, 520, 640, 40, 2, "#000", true, "#FFF");
 	drawLine(c.width/6, 0, c.width/6, 40, 2, "#000");
@@ -13,7 +13,7 @@ function drawMapInterface(map, bits, life, waveQty, selected) {
 	drawLine(5*c.width/6, 0, 5*c.width/6, 40, 2, "#000");
 	drawText("$"+bits, "25px Arial", "center", "#000", c.width/12, 25);
 	drawText("Vida:"+life, "25px Arial", "center", "#000", c.width/4, 25);
-	drawText("Wave:"+waveQty, "25px Arial", "center", "#000", 5*c.width/12, 25);
+	drawText("Wave:"+actualWave+"/"+waveQty, "25px Arial", "center", "#000", 5*c.width/12, 25);
 	drawText(getMapName(map), "25px Arial", "center", "#000", 2*c.width/3, 25);
 	drawText("Menu", "25px Arial", "center", "#000", 11*c.width/12, 25);
 	//drawText("Menu de opções RODAPÉ", "25px Arial", "center", "#000", 320, 545);
@@ -46,6 +46,12 @@ function drawGameOver(optionSelected) {
 		drawText("Tente Novamente", "25px Arial", "center", "#000", 320, 225);
 		drawText("Menu Principal", "25px Arial", "center", "#B0B000", 320, 275);
 	}
+}
+
+function drawWinScreen(optionSelected) {
+	drawRectangle(0, 0, 640, 560, 2, "#000", true, "#FFF");
+	drawText("Parabéns você venceu!", "35px Arial", "center", "#000", 320, 200);
+	drawText("Menu Principal", "25px Arial", "center", "#B0B000", 320, 275);
 }
 
 function getMapName(filename){
@@ -82,8 +88,8 @@ function getWaveQty(filename) {
 	xmlDoc = loadXMLDoc(filename);
 	var objectGroups = xmlDoc.getElementsByTagName("objectgroup");
 	for (var i = 0; i < objectGroups.length; i++) {
-		if (objectGroups[i].getAttribute("name") == "WaveQty") {
-			return objectGroups[i].getElementsByTagName("property")[0].getAttribute("value");
+		if (objectGroups[i].getAttribute("name") == "Waves") {
+			return objectGroups[i].getElementsByTagName("properties")[0].getElementsByTagName("property")[3].getAttribute("value");
 		}
 	}
 }

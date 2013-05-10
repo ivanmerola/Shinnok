@@ -43,7 +43,9 @@ function init() {
 					"maps/chapter1/level1/mapChp1LvL1.js",
 					"js/screenManager.js",
 					"js/towerPlaces.js",
-					"js/gameOverScreen.js"
+					"js/gameOverScreen.js",
+					"js/waveGenerator.js",
+					"js/winScreen.js"
 				],
 				complete : function () {
 					c = document.getElementById("screen");
@@ -208,7 +210,8 @@ var gameStates = {
 	cutScene8 : 70,
 	cutScene9 : 71,
 	settings : 72,
-	gameOver : 73
+	gameOver : 73,
+	winScreen : 74
 }
 
 //Definição de códigos para as opções do menu principal.
@@ -217,9 +220,15 @@ var mainMenuOptions = {
 	options : 2
 }
 
+//Definição de códigos para as opções do menu de game over
 var gameOverOptions = {
 	tryagain : 1,
 	back : 2
+}
+
+//Definição de códigos para as opções do menu de game over
+var winScreenOptions = {
+	back : 1
 }
 
 //Definição dos eventos utilizados
