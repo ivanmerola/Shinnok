@@ -2,6 +2,7 @@
 Funções de desenho para o menu principal.
 Autor: Fernando del Rio
  */
+ 
 //Variáveis para as configurações da tela.
 var mainMenuOptionSelected, mainMenuLoaded = false;
 
@@ -23,7 +24,7 @@ function mainMenuRender() {
 //Função para atualizar a tela.
 function mainMenuUpdate() {
 	if (!keyLocked && keyEnter && mainMenuOptionSelected == mainMenuOptions.play) {
-		gameState = gameStates.chp1LvL1;
+		gameState = gameStates.chapterSelection;
 		keyLocked = true;
 	} else if (down) {
 		mainMenuOptionSelected = mainMenuOptions.options;

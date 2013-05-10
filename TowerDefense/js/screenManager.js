@@ -3,14 +3,14 @@ Biblioteca javascript para manipular as telas do jogo.
 Autor: Fernando del Rio
 */
 
-//FunÁ„o para desenhar as telas do jogo. Par‚metros: O cÛdigo da tela.
+//Fun√ß√£o para desenhar as telas do jogo. Par√¢metros: O c√≥digo da tela.
 function drawGameScreen(gs){
 	if(gs==gameStates.mainMenu){
 		mainMenuRender();
 	} else if(gs==gameStates.chapterSelection){
-	
+		chapterSelectionRender();
 	} else if(gs==gameStates.levelSelection1){
-	
+		level1SelectionRender();
 	} else if(gs==gameStates.levelSelection2){
 	
 	} else if(gs==gameStates.levelSelection3){

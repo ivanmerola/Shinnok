@@ -45,7 +45,9 @@ function init() {
 					"js/towerPlaces.js",
 					"js/gameOverScreen.js",
 					"js/waveGenerator.js",
-					"js/winScreen.js"
+					"js/winScreen.js",
+					"js/chapterSelectScreen.js",
+					"js/levelSelectScreen1.js"
 				],
 				complete : function () {
 					c = document.getElementById("screen");
@@ -224,6 +226,28 @@ var mainMenuOptions = {
 var gameOverOptions = {
 	tryagain : 1,
 	back : 2
+}
+
+var chapterOptions = {
+	chapter1 : 1,
+	chapter2 : 2,
+	chapter3 : 3,
+	chapter4 : 4,
+	chapter5 : 5,
+	chapter6 : 6,
+	chapter7 : 7,
+	chapter8 : 8,
+	back : 9
+}
+
+var levelOptions = {
+	level1 : 1,
+	level2 : 2,
+	level3 : 3,
+	level4 : 4,
+	level5 : 5,
+	backChapter : 6,
+	backMenu : 7
 }
 
 //Definição de códigos para as opções do menu de game over
