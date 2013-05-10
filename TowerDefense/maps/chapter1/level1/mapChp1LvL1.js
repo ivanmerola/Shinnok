@@ -57,7 +57,7 @@ function mapChp1LvL1Render() {
 			//drawCircle(mapChp1LvL1Npcs[i].posX + mapChp1LvL1Npcs[i].chrWidth/2, mapChp1LvL1Npcs[i].posY + 40 + mapChp1LvL1Npcs[i].chrHeight/2, mapChp1LvL1Npcs[i].chrWidth/2, "rgba(0,0,200,0.3)");
 			drawCharacter(canvas, mapChp1LvL1Npcs[i]);
 			updateNPC(mapChp1LvL1Npcs[i]);
-			if (mapChp1LvL1Npcs[i].removed) {
+			if (mapChp1LvL1Npcs[i].removed && mapChp1LvL1Npcs[i].life > 0) {
 				if (mapChp1LvL1Life > 0) {
 					mapChp1LvL1Life--;
 				} 
