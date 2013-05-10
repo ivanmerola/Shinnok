@@ -24,6 +24,8 @@ mapChp1LvL1TowerQtyFrames=7; mapChp1LvL1Range = 50;
 var mapChp1LvL1Bits, mapChp1LvL1Life,
 mapChp1LvL1WaveQty, mapChp1LvL1ActualWave;
 
+//Variável de estado atual do capítulo
+var actualState = statesInterface.i;
 
 function mapChp1LvL1Init() {
 	if (mapChp1LvL1 == undefined) {
@@ -72,14 +74,15 @@ function mapChp1LvL1Render() {
 	}
 	//drawCharacter(canvas, character1);
 	//updateCharacter(character1, down, left, right, up);
+	addTower();
 	mapChp1LvL1Tower = loadTower(xTileMouseOver * 32, yTileMouseOver * 32 - 32, mapChp1LvL1TowerSprite, mapChp1LvL1TowerWidth, mapChp1LvL1TowerHeight, mapChp1LvL1TowerPlaceWidth, mapChp1LvL1TowerPlaceHeight, mapChp1LvL1TowerQtyFrames, false, mapChp1LvL1Range, false);
-	if (mapChp1LvL1Towers.length == 0) {
+	if (mapChp1LvL1Towers.length == 0 && (actualState == statesInterface.p)) {
 		highlightPlaces(mapChp1LvL1Tower, mapChp1LvL1Towers);
 	} else {
 		var highlight = false;
 		for (var i = 0; i < mapChp1LvL1Towers.length; i++) {
 			if (mapChp1LvL1Towers[i].y >= yTileMouseOver * 32) {
-				if (!highlight) {
+				if (!highlight && (actualState == statesInterface.p)) {
 					highlightPlaces(mapChp1LvL1Tower, mapChp1LvL1Towers);
 					highlight = true;
 				}
@@ -87,14 +90,16 @@ function mapChp1LvL1Render() {
 			drawTower(canvas, mapChp1LvL1Towers[i]);
 			updateTower(mapChp1LvL1Towers[i],mapChp1LvL1Npcs);
 		}
-		if (!highlight) {
+		if (!highlight && (actualState == statesInterface.p)) {
 			highlightPlaces(mapChp1LvL1Tower, mapChp1LvL1Towers);
 			highlight = true;
 		}
 	}
 	drawMap(canvas, mapChp1LvL1, getListLayersAbove(mapChp1LvL1Name));
-	var detected = detectTowerSelected(mapChp1LvL1Towers);
-	drawMapInterface(mapChp1LvL1Name, mapChp1LvL1Bits, mapChp1LvL1Life, mapChp1LvL1ActualWave,mapChp1LvL1WaveQty, detected);
+	if(!mouseLocked){
+		var detected = detectTowerSelected(mapChp1LvL1Towers);
+	}
+	drawMapInterface(mapChp1LvL1Name, mapChp1LvL1Bits, mapChp1LvL1Life, mapChp1LvL1ActualWave, mapChp1LvL1WaveQty, detected, actualState);
 	generateWave(mapChp1LvL1Npcs);
 	// if (!keyLocked && keyG) {
 		// keyLocked = true;

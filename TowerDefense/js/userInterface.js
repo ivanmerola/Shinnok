@@ -4,7 +4,7 @@ Autores: Fernando del Rio / Thiago Alves / Orlando Figueiredo / Samuel / Renato
  */
 
 //Função para desenhar a interface que ficará sobre o mapa de uma fase.
-function drawMapInterface(map, bits, life, actualWave, waveQty, selected) {
+function drawMapInterface(map, bits, life, actualWave, waveQty, selected, actualState) {
 	drawRectangle(0, 0, 640, 40, 2, "#000", true, "#FFF");
 	drawRectangle(0, 520, 640, 40, 2, "#000", true, "#FFF");
 	drawLine(c.width/6, 0, c.width/6, 40, 2, "#000");
@@ -17,10 +17,18 @@ function drawMapInterface(map, bits, life, actualWave, waveQty, selected) {
 	drawText(getMapName(map), "25px Arial", "center", "#000", 2*c.width/3, 25);
 	drawText("Menu", "25px Arial", "center", "#000", 11*c.width/12, 25);
 	//drawText("Menu de opções RODAPÉ", "25px Arial", "center", "#000", 320, 545);
-	if (!selected){
+	if (actualState!=statesInterface.s){
+		//drawRectangle(80, 520, 240, 40, 2, "#000", true, "#000");
 		drawLine(c.width/8,520,c.width/8,560,2,"#000");
 		drawLine(c.width/2,520,c.width/2,560,2,"#000");
 		drawLine(c.width/1.5,520,c.width/1.5,560,2,"#000");
+		drawText("Add", "25px Arial", "center", "#000",30, 70);
+	}else{
+		drawLine(c.width/8,520,c.width/8,560,2,"#000");
+		drawLine(2*c.width/8,520,2*c.width/8,560,2,"#000");
+		drawLine(3*c.width/8,520,3*c.width/8,560,2,"#000");		
+		drawLine(4*c.width/8,520,4*c.width/8,560,2,"#000");		
+		drawLine(6*c.width/8,520,6*c.width/8,560,2,"#000");		
 	}	
 
 }

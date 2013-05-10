@@ -20,8 +20,18 @@ keyLocked = false;
 //Level atual do jogo.
 var currentLevel;
 
+//Estados possíveis: i=inicial, p=posicionando a torre, s=selecionando a torre
+var statesInterface = {
+	i : 1,
+	p : 2,
+	s : 3
+}
+
 //Tile sobre o qual paira o mouse.
-var xTileMouseOver = 0, yTileMouseOver = 0
+var xTileMouseOver = 0, yTileMouseOver = 0;
+
+//Posição do mouse e trava para o clique do mouse
+var mousePosX = 0, mousePosY = 0, mouseLocked;
 
 //Posição do mouse em relação ao canvas. True indica que o mouse está dentro do canvas. False indica que o mouse está fora do canvas.
 var mouseInside = false;
@@ -114,6 +124,7 @@ function mouseDown(e) {
 //Função executada quando um botão do mouse, que está sendo pressionado, é solto
 function mouseUp(e) {
 	mouseClicked = false;
+	mouseLocked = false;
 }
 
 //Função executada quando o mouse é movido.
@@ -132,8 +143,10 @@ function mouseMoved(e) {
 		return;
 	}
 	mouseInside = true;
-	xTileMouseOver = Math.floor((e.clientX - rect.left) / 32); //TODO : trocar 32 por uma var global de largura de tile
-	yTileMouseOver = Math.floor((e.clientY - 40 - rect.top) / 32); //TODO : trocar 32 por uma var global de altura de tile
+	mousePosX = e.clientX - rect.left;
+	mousePosY = e.clientY - 40 - rect.top;
+	xTileMouseOver = Math.floor( mousePosX/ 32); //TODO : trocar 32 por uma var global de largura de tile
+	yTileMouseOver = Math.floor(mousePosY/ 32); //TODO : trocar 32 por uma var global de altura de tile
 }
 
 //Representação das teclas do teclado
