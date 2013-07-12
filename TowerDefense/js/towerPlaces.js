@@ -30,6 +30,9 @@ function loadTower(x, y, img, width, height, placeWidth, placeHeight, frameqty, 
 function drawTower(canvas, tower) {
 	//raio que verifica o range
 	//drawCircle(tower.x + (tower.width/2), tower.y + tower.height + 20, tower.range, "rgba(0,0,0,0.3)");
+	if(tower.selected){
+		drawCircle(tower.x + (tower.width / 2), tower.y + tower.height + 40, tower.range, "rgba(0,200,0,0.5)");
+	}
 	canvas.drawImage(tower.image, tower.actualframe * tower.width, 0, tower.width, tower.height, tower.x, tower.y + 40, tower.width, tower.height);
 }
 
@@ -38,7 +41,7 @@ function updateTower(tower, npcs) {
 	tower.shooting = false;
 	for (var i = 0; i < npcs.length; i++) {
 		if (!npcs[i].removed) {
-			var detected = detectNpcInRange(tower.x + (tower.width / 2), tower.y + tower.height + 20, tower.range, npcs[i].posX + npcs[i].chrWidth / 2, npcs[i].posY + npcs[i].chrHeight / 2 + 40, npcs[i].chrWidth / 2);
+			var detected = detectNpcInRange(tower.x + (tower.width / 2), tower.y + tower.height + 40, tower.range, npcs[i].posX + npcs[i].chrWidth / 2, npcs[i].posY + npcs[i].chrHeight / 2 + 40, npcs[i].chrWidth / 2);
 			if (detected) {
 				tower.shooting = true;
 				npcs[i].life -= tower.attack;
@@ -68,7 +71,7 @@ function highlightPlaces(tower, towers) {
 			canvas.globalAlpha = 0.7;
 			drawTower(canvas, tower);
 			canvas.globalAlpha = 1;
-			if (mouseClicked && !hasTower(tower, towers)) {
+			if (mouseClicked && mouseInside && !mouseLocked && !hasTower(tower, towers)) {
 				towers.push(tower);
 				towerOrder(towers);
 				mouseLocked=true;
@@ -135,6 +138,9 @@ function detectNotAvailable(tower) {
 
 //Função que recebe x, y e o raio de uma torre, x, y e um raio de um npc e detecta se houve colisão dos raios ou não
 function detectNpcInRange(towerx, towery, towerR, npcx, npcy, npcR) {
+	// towerx+=16;
+	// towery+=64;
+	//drawCircle(towerx, towery, towerR, "rgba(0,200,0,0.5)");
 	var distance;
 	distance = Math.sqrt(Math.pow((towerx - npcx), 2) + Math.pow((towery - npcy), 2));
 	if (distance <= towerR + npcR) {
@@ -144,16 +150,15 @@ function detectNpcInRange(towerx, towery, towerR, npcx, npcy, npcR) {
 	}
 }
 
-
-//Função para verificar se há uma torre selecionada. Parâmetro: vetor de torres. Retorno: True ou False. c.width/5, 550
-function addTower() {
-		if (mouseClicked) {			
-			if((0<=mousePosX) && (mousePosX<=(40)) && (0<=mousePosY) && (mousePosY<=40)){				
-				actualState = statesInterface.p;				
-			}			
-		}
+//Função para verificar se uma torre será adicionada
+function checkAddTower() {
+	if (mouseClicked) {
+		if(mousePosX>=273 && mousePosX<=308 && mousePosY>=485 && mousePosY<=515) {				
+			actualState = statesInterface.p;
+			mouseLocked=true;
+		}			
+	}
 }
-
 
 //Função para verificar se há uma torre selecionada. Parâmetro: vetor de torres. Retorno: True ou False.
 function detectTowerSelected(tws) {
@@ -172,8 +177,8 @@ function detectTowerSelected(tws) {
 	for (var i = 0; i < tws.length; i++) {
 		if (tws[i].selected) {
 			actualState = statesInterface.s;
-			return true;
+			return tws[i];
 		}
 	}
-	return false;
+	return undefined;
 }

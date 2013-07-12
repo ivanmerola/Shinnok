@@ -22,13 +22,14 @@ function drawMapInterface(map, bits, life, actualWave, waveQty, selected, actual
 		drawLine(c.width/8,520,c.width/8,560,2,"#000");
 		drawLine(c.width/2,520,c.width/2,560,2,"#000");
 		drawLine(c.width/1.5,520,c.width/1.5,560,2,"#000");
-		drawText("Add", "25px Arial", "center", "#000",30, 70);
+		drawText("T1", "25px Arial", "center", "#000",290, 550);
 	}else{
 		drawLine(c.width/8,520,c.width/8,560,2,"#000");
 		drawLine(2*c.width/8,520,2*c.width/8,560,2,"#000");
 		drawLine(3*c.width/8,520,3*c.width/8,560,2,"#000");		
 		drawLine(4*c.width/8,520,4*c.width/8,560,2,"#000");		
-		drawLine(6*c.width/8,520,6*c.width/8,560,2,"#000");		
+		drawLine(6*c.width/8,520,6*c.width/8,560,2,"#000");
+		//drawCircle(selected.x+16, selected.y+96, selected.range, "rgba(0,200,0,0.5)");	
 	}	
 
 }

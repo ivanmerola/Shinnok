@@ -74,7 +74,7 @@ function mapChp1LvL1Render() {
 	}
 	//drawCharacter(canvas, character1);
 	//updateCharacter(character1, down, left, right, up);
-	addTower();
+	checkAddTower();
 	mapChp1LvL1Tower = loadTower(xTileMouseOver * 32, yTileMouseOver * 32 - 32, mapChp1LvL1TowerSprite, mapChp1LvL1TowerWidth, mapChp1LvL1TowerHeight, mapChp1LvL1TowerPlaceWidth, mapChp1LvL1TowerPlaceHeight, mapChp1LvL1TowerQtyFrames, false, mapChp1LvL1Range, false);
 	if (mapChp1LvL1Towers.length == 0 && (actualState == statesInterface.p)) {
 		highlightPlaces(mapChp1LvL1Tower, mapChp1LvL1Towers);

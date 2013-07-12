@@ -73,6 +73,8 @@ function init() {
 //Função de renderização responsável pela saída de dados.
 function render() {
 	drawGameScreen(gameState);
+	// drawText("mouse x: "+mousePosX, "25px Arial", "center", "#000",150, 50);
+	// drawText("mouse y: "+mousePosY, "25px Arial", "center", "#000",150, 150);
 	setTimeout(render, 50);
 }
 
@@ -134,18 +136,17 @@ function mouseMoved(e) {
 		return;
 	}
 	var rect = c.getBoundingClientRect();
-	if (e.clientX < rect.left + 2 || e.clientX > rect.right - 2) {
+	if (e.clientX < rect.left + 2 || e.clientX > rect.right - 2 || e.clientY < rect.top + 42 || e.clientY > rect.bottom - 42) {
 		mouseInside = false;
-		return;
+	} else {
+	// if (e.clientY < rect.top + 42 || e.clientY > rect.bottom - 42) {
+		// mouseInside = false;
+	// }
+		mouseInside = true;
 	}
-	if (e.clientY < rect.top + 42 || e.clientY > rect.bottom - 42) {
-		mouseInside = false;
-		return;
-	}
-	mouseInside = true;
 	mousePosX = e.clientX - rect.left;
 	mousePosY = e.clientY - 40 - rect.top;
-	xTileMouseOver = Math.floor( mousePosX/ 32); //TODO : trocar 32 por uma var global de largura de tile
+	xTileMouseOver = Math.floor(mousePosX/ 32); //TODO : trocar 32 por uma var global de largura de tile
 	yTileMouseOver = Math.floor(mousePosY/ 32); //TODO : trocar 32 por uma var global de altura de tile
 }
 
