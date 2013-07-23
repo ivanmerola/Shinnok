@@ -75,7 +75,7 @@ function render() {
 	drawGameScreen(gameState);
 	// drawText("mouse x: "+mousePosX, "25px Arial", "center", "#000",150, 50);
 	// drawText("mouse y: "+mousePosY, "25px Arial", "center", "#000",150, 150);
-	setTimeout(render, 50);
+	setTimeout(render, 60);
 }
 
 //Função executada quando alguma tecla é pressionada.
