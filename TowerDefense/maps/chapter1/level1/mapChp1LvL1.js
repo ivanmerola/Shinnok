@@ -111,15 +111,24 @@ function mapChp1LvL1Render() {
 		}
 	}
 	drawMap(canvas, mapChp1LvL1, getListLayersAbove(mapChp1LvL1Name));
-	if(!mouseLocked){
-		var detected = detectTowerSelected(mapChp1LvL1Towers);
-	}
-	drawMapInterface(mapChp1LvL1Name, mapChp1LvL1Bits.last(), mapChp1LvL1Life, mapChp1LvL1ActualWave, mapChp1LvL1WaveQty, detected, actualState);
 	generateWave(mapChp1LvL1Npcs);
+	mapChp1LvL1Update();
 	// if (!keyLocked && keyG) {
 		// keyLocked = true;
 		// var npcPos = getNPCStartPoint(mapChp1LvL1Name);
 		// mapChp1LvL1Npc = loadCharacter(npcPos[0], npcPos[1], mapChp1LvL1NpcWidth, mapChp1LvL1NpcHeight, mapChp1LvL1NpcSprite, keyboard.DOWN);
 		// mapChp1LvL1Npcs.push(mapChp1LvL1Npc);
 	// }
+}
+
+function mapChp1LvL1Update(){
+
+	if(!mouseLocked){
+		var detected = detectTowerSelected(mapChp1LvL1Towers);
+	}
+
+	//buttonUpdate();
+	drawMapInterface(mapChp1LvL1Name, mapChp1LvL1Bits.last(), mapChp1LvL1Life, mapChp1LvL1ActualWave, mapChp1LvL1WaveQty, detected, actualState);
+	buttonUpdate();
+
 }

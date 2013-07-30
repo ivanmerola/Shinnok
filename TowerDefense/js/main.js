@@ -31,13 +31,18 @@ var statesInterface = {
 var xTileMouseOver = 0, yTileMouseOver = 0;
 
 //Posição do mouse e trava para o clique do mouse
-var mousePosX = 0, mousePosY = 0, mouseLocked;
+var mousePosX = 0, mousePosY = 0, mouseAuxPosY = 0, mouseLocked;
 
 //Posição do mouse em relação ao canvas. True indica que o mouse está dentro do canvas. False indica que o mouse está fora do canvas.
 var mouseInside = false;
 
 //Estado do mouse. True indica que o botão está sendo pressionado. False indica que o botão não está sendo pressionado
 var mouseClicked;
+
+var over = false;
+var clicked = false;
+var moved = false;
+var up, down, up2;
 
 //Primeira função a ser executada. Utilizada para carregar os scripts, recursos e iniciar a renderização.
 function init() {
@@ -57,7 +62,8 @@ function init() {
 					"js/waveGenerator.js",
 					"js/winScreen.js",
 					"js/chapterSelectScreen.js",
-					"js/levelSelectScreen1.js"
+					"js/levelSelectScreen1.js",
+					"js/button.js"
 				],
 				complete : function () {
 					c = document.getElementById("screen");
@@ -121,12 +127,103 @@ function keyUp(e) {
 //Função executada quando um botão do mouse é pressionado.
 function mouseDown(e) {
 	mouseClicked = true;
+	down = true;
+	up = false;
 }
 
 //Função executada quando um botão do mouse, que está sendo pressionado, é solto
 function mouseUp(e) {
 	mouseClicked = false;
 	mouseLocked = false;
+	up = true;
+}
+
+function isOverPolygon(button){
+
+var nvert = button.sides;
+var vertx = button.xpoints;
+var verty = button.ypoints;
+var testx = mousePosX;
+var testy = mouseAuxPosY;
+
+var i;
+var j = nvert - 1;
+var c = false;
+    for( i = 0; i < nvert; i++ ) {
+        if (((verty[i]<testy && verty[j]>=testy) || (verty[j]<testy && verty[i]>=testy))
+		&& (vertx[i]<=testx || vertx[j]<=testx)){
+			c= ((vertx[i]+(testy-verty[i])/(verty[j]-verty[i])*(vertx[j]-vertx[i]))<testx);
+		}
+		j=i;
+    }
+    return c;
+
+}
+
+function determinante(polx, poly){
+
+	var a = polx[0];
+	var b = polx[1];
+	var c = mousePosX;
+	var d = poly[0];
+	var e = poly[1];
+	var f = mouseAuxPosY;
+	var g = 1, h = 1, i = 1;
+	return (a*e*i + b*f*g + c*d*h - a*f*h - b*d*i - c*e*g)>0;
+
+}
+
+function isInside(polygon){
+	
+	var bool = 0;
+	var aux = polygon.sides;
+
+	for(i=0;i<aux;i++){
+		if(i==aux-1){
+			var pol1 = [polygon.xpoints[i], polygon.xpoints[0]];
+			var pol2 = [polygon.ypoints[i], polygon.ypoints[0]];
+		}else{
+			var pol1 = [polygon.xpoints[i], polygon.xpoints[i+1]];
+			var pol2 = [polygon.ypoints[i], polygon.ypoints[i+1]];
+		}
+		if(!determinante(pol1, pol2)){bool++;}
+	}
+
+	return bool==polygon.sides;
+
+}
+
+function isOver(button){
+
+	if(mousePosX >= button.x && mousePosX <= (button.x + button.width) 
+	&& mouseAuxPosY >= button.y && mouseAuxPosY <= (button.y + button.height)){
+		over = true;
+	}else{
+		over = false;
+	}
+	return over;
+}
+
+function isClicked(){
+
+	if(down){
+		clicked = true;
+	}else{
+		clicked = false;
+	}
+	return clicked;
+
+}
+
+function isUp(){
+
+	if(up){
+		down = false;
+		up2 = true;
+	}else{
+		up2 = false;
+	}
+	return up2;
 }
 
 //Função executada quando o mouse é movido.
@@ -135,6 +232,8 @@ function mouseMoved(e) {
 	if(c==undefined){
 		return;
 	}
+	up = false;
+	moved = true;
 	var rect = c.getBoundingClientRect();
 	if (e.clientX < rect.left + 2 || e.clientX > rect.right - 2 || e.clientY < rect.top + 42 || e.clientY > rect.bottom - 42) {
 		mouseInside = false;
@@ -146,6 +245,7 @@ function mouseMoved(e) {
 	}
 	mousePosX = e.clientX - rect.left;
 	mousePosY = e.clientY - 40 - rect.top;
+	mouseAuxPosY = e.clientY - rect.top;
 	xTileMouseOver = Math.floor(mousePosX/ 32); //TODO : trocar 32 por uma var global de largura de tile
 	yTileMouseOver = Math.floor(mousePosY/ 32); //TODO : trocar 32 por uma var global de altura de tile
 }
@@ -276,3 +376,4 @@ window.onload = init;
 window.onmousemove = mouseMoved;
 window.onmousedown = mouseDown;
 window.onmouseup = mouseUp;
+//window.onmouseover = mouseOver;

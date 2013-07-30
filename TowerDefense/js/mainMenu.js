@@ -5,9 +5,11 @@ Autor: Fernando del Rio
  
 //Variáveis para as configurações da tela.
 var mainMenuOptionSelected, mainMenuLoaded = false;
+var map, mapName = "maps/chapter1/level1/mapChp1LvL1.tmx";
 
 //Função para inicialização da tela.
 function mainMenuInit() {
+	//map = loadMap(mapName);
 	mainMenuOptionSelected = mainMenuOptions.play;
 }
 
@@ -23,6 +25,9 @@ function mainMenuRender() {
 
 //Função para atualizar a tela.
 function mainMenuUpdate() {
+
+	buttonUpdate();
+
 	if (!keyLocked && keyEnter && mainMenuOptionSelected == mainMenuOptions.play) {
 		gameState = gameStates.chapterSelection;
 		keyLocked = true;

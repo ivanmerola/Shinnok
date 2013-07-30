@@ -60,3 +60,16 @@ function drawCircle(x, y, r, color) {
 	canvas.closePath();
 	canvas.fill();
 }
+
+function drawPolygon(Xpoints, Ypoints, color){
+
+	canvas.fillStyle = color;
+	canvas.beginPath();
+	canvas.moveTo(Xpoints[0], Ypoints[0]);
+	for (var i = 1; i<Xpoints.length; i++){
+		canvas.lineTo(Xpoints[i], Ypoints[i]);
+	}
+	canvas.closePath();
+	canvas.fill();
+
+}

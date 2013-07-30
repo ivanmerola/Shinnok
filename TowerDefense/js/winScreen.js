@@ -23,6 +23,7 @@ function winScreenRender() {
 
 //Função para atualizar a tela.
 function winScreenUpdate() {
+	buttonUpdate();
 	if (!keyLocked && keyEnter && winScreenOptionSelected == winScreenOptions.back) {
 		gameState = gameStates.mainMenu;
 		keyLocked = true;

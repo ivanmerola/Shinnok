@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="100" height="100" tilewidth="32" tileheight="32">
+ <tileset firstgid="1" name="Westeros" tilewidth="32" tileheight="32">
+  <image source="../../../../../../../Pictures/new_official_westeros_map_by_gunnar_santos-d5p22qd.jpg" width="900" height="600"/>
+ </tileset>
+ <layer name="Mapa" width="100" height="100" visible="0">
+  <data encoding="base64" compression="zlib">
+   eJzt0ef3F3IYx+EyC5Uio4xoCBWKbEqkTWVrUGSXPTNSKStUNGig0iIUpUJWwyqyGhqo7JS9Xf6C3xPn63zPeb/O53rweXjfd+lSpUptwqZsxuZswZaUoSxbsTXbUI7yVGBbKlKJ7dieyuzAjuzEzlShKruUSiW1K7uxO9XYgz2pTg1qUou9qM3e7MO+1KEu9diP/TmA+jTgQA6iIQdzSGFGKuoO5TAO5wiO5CiOphGNOYYmHMtxNOV4mtGcFrSkFa1pwwmcSFva0Z6TCjNSUXcyp3Aqp3E6Z3AmHehIJzpzFmfTha6cw7l04zzO5wIu5CIu5hK604NLCzNSUXcZl3MFV3IVV3MN13Id13MDPbmRm7iZW+jFrfSmD325jX7053bu4E7uKsxIRd3dDOAe7uU+BjKIwdzPAwxhKMMYzoM8xAhGMorRPMwjPMoYxjKOxxhfmJGKuglMZBKTeZwnmMKTPMXTTGUaz/As05nBc8xkFrN5nhd4kTm8xMu8wquFGamoe425zGM+C3idN3iTt3ibhSziHd5lMe/xPh/wIR+xhKUsYzkfs4KVrCrMSEXdaj7hUz5jDWtZx+d8wZd8xdd8w7es5zs2sJHv+YEf+Ymf+YVf+Y3f+aNAMxVzf/IXf//7Ke2xCZuyGZuzBVtShrJsxdZsQznKU4FtqUgltmN7KrMDO7JT6f931mJoZzuqQlV2YVd2Y3eqsQd7Up0a1KQWe1GbvdmHfalDXeqxH/tzAPVpwIG5R4kdZEcNOZhDOJTDOJwjOJKjOJpGNOYYmnAsx9GU42lGc1rQkla0pg0ncGLuUWJt7agd7TmJkzmFUzmN0zmDM+lARzrRmbM4my505RzOpRvncT4XcCEXcXHuUWKX2FF3enApl3E5V3AlV3E113At13E9N9CTG7mJm7mFXtxKb/rQl9voR//co8Rut6M7uJO7uJsB3MO93MdABjGY+3mAIQxlGMN5kIcYwUhGMZqHeYRHGZN7lNhYOxrHY4xnAhOZxGQe5wmm8CRP8TRTmcYzPMt0ZvAcM5nFbJ7nBV5kTu5RYi/Z0cu8wqu8xlzmMZ8FvM4bvMlbvM1CFvEO77KY93ifD/iQj1jCUpaxPPcosY/taAUrWcVqPuFTPmMNa1nH53zBl3zF13zDt6znOzawke/5gR/5iZ/5JfdIKaWUUkoppZRSSimllFJKKaWUUkoppZRSSimllFJKKaWUUkoppZRSSimllFJKKaWUUkoppZRSSimllFJKKaWUUkoppZRSSimllFJKKaWU0n/QP9AK+RY=
+  </data>
+ </layer>
+ <objectgroup name="Capa de Objetos 1" width="100" height="100">
+  <object x="578" y="65">
+   <polyline points="0,0 -31,29 8,44 45,15 1,0"/>
+  </object>
+  <object x="42" y="2">
+   <polyline points="0,0 35,47 -2,116 -3,203 1,287 -2,380 51,433 186,431 189,41 132,6 0,-1"/>
+  </object>
+  <object x="293" y="169">
+   <polyline points="0,0 -31,71 -23,189 -34,228 39,239 134,252 124,329 178,335 446,334 497,298 494,11 326,-43 245,11 162,1 54,35 0,-2"/>
+  </object>
+  <object x="219" y="495">
+   <polyline points="0,0 2,72 95,77 31,-6 1,0"/>
+  </object>
+ </objectgroup>
+</map>

@@ -23,6 +23,7 @@ function gameOverRender() {
 
 //Função para atualizar a tela.
 function gameOverUpdate() {
+	buttonUpdate();
 	if (!keyLocked && keyEnter && gameOverOptionSelected == gameOverOptions.tryagain) {
 		gameState = currentLevel;
 		keyLocked = true;

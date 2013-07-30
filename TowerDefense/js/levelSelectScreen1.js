@@ -23,6 +23,7 @@ function level1SelectionRender() {
 
 //Função para atualizar a tela.
 function level1SelectionUpdate() {
+	buttonUpdate();
 	//Verifica se foi apertada a tecla enter
 	if (!keyLocked && keyEnter && levelOptionselected == levelOptions.level1) {
 		gameState = gameStates.chp1LvL1;
