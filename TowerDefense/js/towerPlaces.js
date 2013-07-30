@@ -1,10 +1,14 @@
 /*
 Biblioteca javascript para detectar locais disponíveis para colocar torres
-Autor: Thiago Alves / Orlando Figueiredo / Samuel / Renato
+Autor: Thiago Alves / Orlando Figueiredo / Samuel / Renato / Ivan
  */
 
 //Indica a possibilidade de se colocar uma torre. True uma torre pode ser colocada naquela posição. False uma torre não pode ser colocada naquela posição
 var placeOk = true;
+var select = 0;
+var date1 = 0;
+var date2 = 0;
+var time = 100;
 
 //Função para carregar uma torre. Parâmetro: posição (x,y), caminho da sprite, largura e altura da imagem, quantidade de frames, frame atual.
 function loadTower(x, y, img, width, height, placeWidth, placeHeight, frameqty, shooting, range, selected) {
@@ -23,6 +27,7 @@ function loadTower(x, y, img, width, height, placeWidth, placeHeight, frameqty, 
 	tower.range = range;
 	tower.selected = selected;
 	tower.attack = 10;
+	tower.cost = 50;
 	return tower;
 }
 
@@ -37,31 +42,63 @@ function drawTower(canvas, tower) {
 }
 
 //Função para atualizar o estado de uma torre. Parâmetro: a torre que será atualizada.
-function updateTower(tower, npcs) {
+function updateTower(tower, npcs, bullet) {
 	tower.shooting = false;
 	for (var i = 0; i < npcs.length; i++) {
 		if (!npcs[i].removed) {
 			var detected = detectNpcInRange(tower.x + (tower.width / 2), tower.y + tower.height + 40, tower.range, npcs[i].posX + npcs[i].chrWidth / 2, npcs[i].posY + npcs[i].chrHeight / 2 + 40, npcs[i].chrWidth / 2);
 			if (detected) {
 				tower.shooting = true;
+				updateBulletPosition(bullet, npcs[i], tower);
 				npcs[i].life -= tower.attack;
 				break;
 			}
 		}
 	}
 	if (tower.shooting) {
+		date2 = new Date();
 		if ((tower.actualframe + 1) == tower.frameqty) {
 			tower.actualframe = 0;
-		} else {
+		}else if (date2.getMilliseconds() - date1.getMilliseconds() >= time || 
+			date2.getMilliseconds() - date1.getMilliseconds() <= -time || 
+			date1.getMilliseconds() - date2.getMilliseconds() >= -time || 
+			date1.getMilliseconds() - date2.getMilliseconds() <= time){
 			tower.actualframe++;
+			date1 = new Date();
 		}
 	} else {
 		tower.actualframe = 0;
 	}
 }
 
+function updateBulletPosition(bullet, enemy, tower){
+
+	//Laser shot.
+	if(bullet.width == 0){
+		drawLine(tower.x + (tower.width / 2), tower.y + (tower.height), enemy.posX + (enemy.chrWidth / 4), enemy.posY + (enemy.chrHeight * 1.5), 2, "rgb(255,255,0)");
+
+	//Initial position
+	}else if(select == 0){
+		canvas.drawImage(bullet, tower.x + (tower.width / 2), tower.y + (tower.height), bullet.width, bullet.height);
+
+	//Middle position
+	}else if (select == 1){
+		var x = ((tower.x + (tower.width / 2))+(enemy.posX + (enemy.chrWidth / 4)))/2;
+		var y = ((tower.y + (tower.height))+(enemy.posY + enemy.chrHeight))/2;
+		canvas.drawImage(bullet, x, y, bullet.width, bullet.height);
+
+	//Hit the target
+	}else if (select == 2){
+		canvas.drawImage(bullet, enemy.posX + (enemy.chrWidth / 4), enemy.posY + enemy.chrHeight, bullet.width, bullet.height);
+	}else{
+		select = 0;
+	}
+	select++;
+	
+}
+
 //Função que desenha a torre onde o mouse estiver.
-function highlightPlaces(tower, towers) {
+function highlightPlaces(tower, towers, bits) {
 	if (mouseInside) {
 		detectNotAvailable(tower);
 		if (placeOk) {
@@ -71,11 +108,14 @@ function highlightPlaces(tower, towers) {
 			canvas.globalAlpha = 0.7;
 			drawTower(canvas, tower);
 			canvas.globalAlpha = 1;
-			if (mouseClicked && mouseInside && !mouseLocked && !hasTower(tower, towers)) {
+			if (mouseClicked && mouseInside && !mouseLocked && !hasTower(tower, towers) && bits.last()>0) {
 				towers.push(tower);
 				towerOrder(towers);
+				var bits2 = bits.last() - tower.cost;
+				bits.push(bits2);
 				mouseLocked=true;
 				actualState = statesInterface.i;
+				date1 = new Date();
 			}
 		} else {
 			canvas.fillStyle = "rgba(200,0,0,0.5)";

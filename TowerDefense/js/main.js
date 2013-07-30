@@ -31,13 +31,18 @@ var statesInterface = {
 var xTileMouseOver = 0, yTileMouseOver = 0;
 
 //Posição do mouse e trava para o clique do mouse
-var mousePosX = 0, mousePosY = 0, mouseLocked;
+var mousePosX = 0, mousePosY = 0, mouseAuxPosY = 0, mouseLocked;
 
 //Posição do mouse em relação ao canvas. True indica que o mouse está dentro do canvas. False indica que o mouse está fora do canvas.
 var mouseInside = false;
 
 //Estado do mouse. True indica que o botão está sendo pressionado. False indica que o botão não está sendo pressionado
 var mouseClicked;
+
+var over = false;
+var clicked = false;
+var moved = false;
+var up, down, up2;
 
 //Primeira função a ser executada. Utilizada para carregar os scripts, recursos e iniciar a renderização.
 function init() {
@@ -57,7 +62,8 @@ function init() {
 					"js/waveGenerator.js",
 					"js/winScreen.js",
 					"js/chapterSelectScreen.js",
-					"js/levelSelectScreen1.js"
+					"js/levelSelectScreen1.js",
+					"js/button.js"
 				],
 				complete : function () {
 					c = document.getElementById("screen");
@@ -75,7 +81,7 @@ function render() {
 	drawGameScreen(gameState);
 	// drawText("mouse x: "+mousePosX, "25px Arial", "center", "#000",150, 50);
 	// drawText("mouse y: "+mousePosY, "25px Arial", "center", "#000",150, 150);
-	setTimeout(render, 50);
+	setTimeout(render, 60);
 }
 
 //Função executada quando alguma tecla é pressionada.
@@ -121,12 +127,50 @@ function keyUp(e) {
 //Função executada quando um botão do mouse é pressionado.
 function mouseDown(e) {
 	mouseClicked = true;
+	down = true;
+	up = false;
 }
 
 //Função executada quando um botão do mouse, que está sendo pressionado, é solto
 function mouseUp(e) {
 	mouseClicked = false;
 	mouseLocked = false;
+	up = true;
+}
+
+function isOver(button){
+
+	if(mousePosX >= button.x && mousePosX <= (button.x + button.width) 
+	&& mouseAuxPosY >= button.y && mouseAuxPosY <= (button.y + button.height)){
+		over = true;
+	}else{
+		over = false;
+	}
+	return over;
+}
+
+function isClicked(button){
+
+	if(mousePosX >= button.x && mousePosX <= (button.x + button.width) 
+	&& mouseAuxPosY >= button.y && mouseAuxPosY <= (button.y + button.height) && down){
+		clicked = true;
+	}else{
+		clicked = false;
+	}
+	return clicked;
+
+}
+
+function isUp(button){
+
+	if(mousePosX >= button.x && mousePosX <= (button.x + button.width) 
+	&& mouseAuxPosY >= button.y && mouseAuxPosY <= (button.y + button.height) && up){
+		down = false;
+		up2 = true;
+	}else{
+		up2 = false;
+	}
+	return up2;
 }
 
 //Função executada quando o mouse é movido.
@@ -135,6 +179,8 @@ function mouseMoved(e) {
 	if(c==undefined){
 		return;
 	}
+	up = false;
+	moved = true;
 	var rect = c.getBoundingClientRect();
 	if (e.clientX < rect.left + 2 || e.clientX > rect.right - 2 || e.clientY < rect.top + 42 || e.clientY > rect.bottom - 42) {
 		mouseInside = false;
@@ -146,6 +192,7 @@ function mouseMoved(e) {
 	}
 	mousePosX = e.clientX - rect.left;
 	mousePosY = e.clientY - 40 - rect.top;
+	mouseAuxPosY = e.clientY - rect.top;
 	xTileMouseOver = Math.floor(mousePosX/ 32); //TODO : trocar 32 por uma var global de largura de tile
 	yTileMouseOver = Math.floor(mousePosY/ 32); //TODO : trocar 32 por uma var global de altura de tile
 }
@@ -276,3 +323,4 @@ window.onload = init;
 window.onmousemove = mouseMoved;
 window.onmousedown = mouseDown;
 window.onmouseup = mouseUp;
+//window.onmouseover = mouseOver;

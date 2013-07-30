@@ -23,6 +23,9 @@ function mainMenuRender() {
 
 //Função para atualizar a tela.
 function mainMenuUpdate() {
+
+	buttonUpdate();
+
 	if (!keyLocked && keyEnter && mainMenuOptionSelected == mainMenuOptions.play) {
 		gameState = gameStates.chapterSelection;
 		keyLocked = true;

@@ -23,6 +23,7 @@ function chapterSelectionRender() {
 
 //Função para atualizar a tela.
 function chapterSelectionUpdate() {
+	buttonUpdate();
 	//Verifica se foi apertada a tecla enter
 	if (!keyLocked && keyEnter && chapterOptionSelected == chapterOptions.chapter1) {
 		gameState = gameStates.levelSelection1;

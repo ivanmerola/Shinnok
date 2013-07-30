@@ -15,14 +15,16 @@ function drawMapInterface(map, bits, life, actualWave, waveQty, selected, actual
 	drawText("Vida:"+life, "25px Arial", "center", "#000", c.width/4, 25);
 	drawText("Wave:"+actualWave+"/"+waveQty, "25px Arial", "center", "#000", 5*c.width/12, 25);
 	drawText(getMapName(map), "25px Arial", "center", "#000", 2*c.width/3, 25);
-	drawText("Menu", "25px Arial", "center", "#000", 11*c.width/12, 25);
+	//drawText("Menu", "25px Arial", "center", "#000", 11*c.width/12, 25);
+	loadButton((11*c.width/12)-30, 3, 60, 30, "#FFF", "Menu", 11*c.width/12, 25, "#000");
 	//drawText("Menu de opções RODAPÉ", "25px Arial", "center", "#000", 320, 545);
 	if (actualState!=statesInterface.s){
 		//drawRectangle(80, 520, 240, 40, 2, "#000", true, "#000");
 		drawLine(c.width/8,520,c.width/8,560,2,"#000");
 		drawLine(c.width/2,520,c.width/2,560,2,"#000");
 		drawLine(c.width/1.5,520,c.width/1.5,560,2,"#000");
-		drawText("T1", "25px Arial", "center", "#000",290, 550);
+		//drawText("T1", "25px Arial", "center", "#000",290, 550);
+		loadButton(270, 525, 40, 30, "#FFF", "T1", 290, 550, "#000");
 	}else{
 		drawLine(c.width/8,520,c.width/8,560,2,"#000");
 		drawLine(2*c.width/8,520,2*c.width/8,560,2,"#000");
@@ -37,221 +39,44 @@ function drawMapInterface(map, bits, life, actualWave, waveQty, selected, actual
 //Função para desenhar o menu principal. Parâmetros: qual opção está selecionada.
 function drawMenu(optionSelected) {
 	drawRectangle(0, 0, 640, 560, 2, "#000", true, "#FFF");
-	if (optionSelected == mainMenuOptions.play) {
-		drawText("Jogar", "25px Arial", "center", "#B0B000", 320, 225);
-		drawText("Opções", "25px Arial", "center", "#000", 320, 275);
-	} else if (optionSelected == mainMenuOptions.options) {
-		drawText("Jogar", "25px Arial", "center", "#000", 320, 225);
-		drawText("Opções", "25px Arial", "center", "#B0B000", 320, 275);
-	}
+	loadButton(280, 203, 80, 30, "#FFF", "Jogar", 320, 225, "#000");
+	loadButton(270, 253, 100, 30, "#FFF", "Opcoes", 320, 275, "#000");
 }
 
 function drawGameOver(optionSelected) {
 	drawRectangle(0, 0, 640, 560, 2, "#000", true, "#FFF");
-	if (optionSelected == gameOverOptions.tryagain) {
-		drawText("Tente Novamente", "25px Arial", "center", "#B0B000", 320, 225);
-		drawText("Menu Principal", "25px Arial", "center", "#000", 320, 275);
-	} else if (optionSelected == gameOverOptions.back) {
-		drawText("Tente Novamente", "25px Arial", "center", "#000", 320, 225);
-		drawText("Menu Principal", "25px Arial", "center", "#B0B000", 320, 275);
-	}
+	loadButton(215, 203, 210, 30, "#FFF", "Tente Novamente", 320, 225, "#000");
+	loadButton(230, 253, 180, 30, "#FFF", "Menu Principal", 320, 275, "#000");
 }
 
 function drawChapterSelectScreen(optionSelected) {
 	drawRectangle(0, 0, 640, 560, 2, "#000", true, "#FFF");
-	switch (optionSelected) {
-
-		case chapterOptions.chapter1 :
-			drawText("Capitulo 1", "25px Arial", "center", "#B0B000", 320, 32);
-			drawText("Capitulo 2", "25px Arial", "center", "#000", 320, 94);
-			drawText("Capitulo 3", "25px Arial", "center", "#000", 320, 156);
-			drawText("Capitulo 4", "25px Arial", "center", "#000", 320, 218);
-			drawText("Capitulo 5", "25px Arial", "center", "#000", 320, 280);
-			drawText("Capitulo 6", "25px Arial", "center", "#000", 320, 342);
-			drawText("Capitulo 7", "25px Arial", "center", "#000", 320, 404);
-			drawText("Capitulo 8", "25px Arial", "center", "#000", 320, 466);
-			drawText("Menu Principal", "25px Arial", "center", "#000", 320, 528);
-			break;
-
-		case chapterOptions.chapter2 :
-			drawText("Capitulo 1", "25px Arial", "center", "#000", 320, 32);
-			drawText("Capitulo 2", "25px Arial", "center", "#B0B000", 320, 94);
-			drawText("Capitulo 3", "25px Arial", "center", "#000", 320, 156);
-			drawText("Capitulo 4", "25px Arial", "center", "#000", 320, 218);
-			drawText("Capitulo 5", "25px Arial", "center", "#000", 320, 280);
-			drawText("Capitulo 6", "25px Arial", "center", "#000", 320, 342);
-			drawText("Capitulo 7", "25px Arial", "center", "#000", 320, 404);
-			drawText("Capitulo 8", "25px Arial", "center", "#000", 320, 466);
-			drawText("Menu Principal", "25px Arial", "center", "#000", 320, 528);
-			break;
-
-		case chapterOptions.chapter3 :
-			drawText("Capitulo 1", "25px Arial", "center", "#000", 320, 32);
-			drawText("Capitulo 2", "25px Arial", "center", "#000", 320, 94);
-			drawText("Capitulo 3", "25px Arial", "center", "#B0B000", 320, 156);
-			drawText("Capitulo 4", "25px Arial", "center", "#000", 320, 218);
-			drawText("Capitulo 5", "25px Arial", "center", "#000", 320, 280);
-			drawText("Capitulo 6", "25px Arial", "center", "#000", 320, 342);
-			drawText("Capitulo 7", "25px Arial", "center", "#000", 320, 404);
-			drawText("Capitulo 8", "25px Arial", "center", "#000", 320, 466);
-			drawText("Menu Principal", "25px Arial", "center", "#000", 320, 528);
-			break;
-
-		case chapterOptions.chapter4 :
-			drawText("Capitulo 1", "25px Arial", "center", "#000", 320, 32);
-			drawText("Capitulo 2", "25px Arial", "center", "#000", 320, 94);
-			drawText("Capitulo 3", "25px Arial", "center", "#000", 320, 156);
-			drawText("Capitulo 4", "25px Arial", "center", "#B0B000", 320, 218);
-			drawText("Capitulo 5", "25px Arial", "center", "#000", 320, 280);
-			drawText("Capitulo 6", "25px Arial", "center", "#000", 320, 342);
-			drawText("Capitulo 7", "25px Arial", "center", "#000", 320, 404);
-			drawText("Capitulo 8", "25px Arial", "center", "#000", 320, 466);
-			drawText("Menu Principal", "25px Arial", "center", "#000", 320, 528);
-			break;
-
-		case chapterOptions.chapter5 :
-			drawText("Capitulo 1", "25px Arial", "center", "#000", 320, 32);
-			drawText("Capitulo 2", "25px Arial", "center", "#000", 320, 94);
-			drawText("Capitulo 3", "25px Arial", "center", "#000", 320, 156);
-			drawText("Capitulo 4", "25px Arial", "center", "#000", 320, 218);
-			drawText("Capitulo 5", "25px Arial", "center", "#B0B000", 320, 280);
-			drawText("Capitulo 6", "25px Arial", "center", "#000", 320, 342);
-			drawText("Capitulo 7", "25px Arial", "center", "#000", 320, 404);
-			drawText("Capitulo 8", "25px Arial", "center", "#000", 320, 466);
-			drawText("Menu Principal", "25px Arial", "center", "#000", 320, 528);
-			break;
-
-		case chapterOptions.chapter6 :
-			drawText("Capitulo 1", "25px Arial", "center", "#000", 320, 32);
-			drawText("Capitulo 2", "25px Arial", "center", "#000", 320, 94);
-			drawText("Capitulo 3", "25px Arial", "center", "#000", 320, 156);
-			drawText("Capitulo 4", "25px Arial", "center", "#000", 320, 218);
-			drawText("Capitulo 5", "25px Arial", "center", "#000", 320, 280);
-			drawText("Capitulo 6", "25px Arial", "center", "#B0B000", 320, 342);
-			drawText("Capitulo 7", "25px Arial", "center", "#000", 320, 404);
-			drawText("Capitulo 8", "25px Arial", "center", "#000", 320, 466);
-			drawText("Menu Principal", "25px Arial", "center", "#000", 320, 528);
-			break;
-
-		case chapterOptions.chapter7 :
-			drawText("Capitulo 1", "25px Arial", "center", "#000", 320, 32);
-			drawText("Capitulo 2", "25px Arial", "center", "#000", 320, 94);
-			drawText("Capitulo 3", "25px Arial", "center", "#000", 320, 156);
-			drawText("Capitulo 4", "25px Arial", "center", "#000", 320, 218);
-			drawText("Capitulo 5", "25px Arial", "center", "#000", 320, 280);
-			drawText("Capitulo 6", "25px Arial", "center", "#000", 320, 342);
-			drawText("Capitulo 7", "25px Arial", "center", "#B0B000", 320, 404);
-			drawText("Capitulo 8", "25px Arial", "center", "#000", 320, 466);
-			drawText("Menu Principal", "25px Arial", "center", "#000", 320, 528);
-			break;
-
-		case chapterOptions.chapter8 :
-			drawText("Capitulo 1", "25px Arial", "center", "#000", 320, 32);
-			drawText("Capitulo 2", "25px Arial", "center", "#000", 320, 94);
-			drawText("Capitulo 3", "25px Arial", "center", "#000", 320, 156);
-			drawText("Capitulo 4", "25px Arial", "center", "#000", 320, 218);
-			drawText("Capitulo 5", "25px Arial", "center", "#000", 320, 280);
-			drawText("Capitulo 6", "25px Arial", "center", "#000", 320, 342);
-			drawText("Capitulo 7", "25px Arial", "center", "#000", 320, 404);
-			drawText("Capitulo 8", "25px Arial", "center", "#B0B000", 320, 466);
-			drawText("Menu Principal", "25px Arial", "center", "#000", 320, 528);
-			break;
-
-
-		case chapterOptions.back :
-			drawText("Capitulo 1", "25px Arial", "center", "#000", 320, 32);
-			drawText("Capitulo 2", "25px Arial", "center", "#000", 320, 94);
-			drawText("Capitulo 3", "25px Arial", "center", "#000", 320, 156);
-			drawText("Capitulo 4", "25px Arial", "center", "#000", 320, 218);
-			drawText("Capitulo 5", "25px Arial", "center", "#000", 320, 280);
-			drawText("Capitulo 6", "25px Arial", "center", "#000", 320, 342);
-			drawText("Capitulo 7", "25px Arial", "center", "#000", 320, 404);
-			drawText("Capitulo 8", "25px Arial", "center", "#000", 320, 466);
-			drawText("Menu Principal", "25px Arial", "center", "#B0B000", 320, 528);
-			break;
-	}
+	loadButton(260, 10, 120, 30, "#FFF", "Capitulo 1", 320, 32, "#000");
+	loadButton(260, 72, 120, 30, "#FFF", "Capitulo 2", 320, 94, "#000");
+	loadButton(260, 134, 120, 30, "#FFF", "Capitulo 3", 320, 156, "#000");
+	loadButton(260, 196, 120, 30, "#FFF", "Capitulo 4", 320, 218, "#000");
+	loadButton(260, 258, 120, 30, "#FFF", "Capitulo 5", 320, 280, "#000");
+	loadButton(260, 320, 120, 30, "#FFF", "Capitulo 6", 320, 342, "#000");
+	loadButton(260, 382, 120, 30, "#FFF", "Capitulo 7", 320, 404, "#000");
+	loadButton(260, 444, 120, 30, "#FFF", "Capitulo 8", 320, 466, "#000");
+	loadButton(230, 506, 180, 30, "#FFF", "Menu Principal", 320, 528, "#000");
 }
 
 function drawLevel1SelectScreen(optionSelected) {
 	drawRectangle(0, 0, 640, 560, 2, "#000", true, "#FFF");
-	switch (optionSelected) {
-
-		case levelOptions.level1 :
-			drawText("Level 1", "25px Arial", "center", "#B0B000", 320, 40);
-			drawText("Level 2", "25px Arial", "center", "#000", 320, 120);
-			drawText("Level 3", "25px Arial", "center", "#000", 320, 200);
-			drawText("Level 4", "25px Arial", "center", "#000", 320, 280);
-			drawText("Level 5", "25px Arial", "center", "#000", 320, 360);
-			drawText("Seleção de Capítulos", "25px Arial", "center", "#000", 320, 440);
-			drawText("Menu Principal", "25px Arial", "center", "#000", 320, 520);
-			break;
-
-		case levelOptions.level2 :
-			drawText("Level 1", "25px Arial", "center", "#000", 320, 40);
-			drawText("Level 2", "25px Arial", "center", "#B0B000", 320, 120);
-			drawText("Level 3", "25px Arial", "center", "#000", 320, 200);
-			drawText("Level 4", "25px Arial", "center", "#000", 320, 280);
-			drawText("Level 5", "25px Arial", "center", "#000", 320, 360);
-			drawText("Seleção de Capítulos", "25px Arial", "center", "#000", 320, 440);
-			drawText("Menu Principal", "25px Arial", "center", "#000", 320, 520);
-			break;
-
-		case levelOptions.level3 :
-			drawText("Level 1", "25px Arial", "center", "#000", 320, 40);
-			drawText("Level 2", "25px Arial", "center", "#000", 320, 120);
-			drawText("Level 3", "25px Arial", "center", "#B0B000", 320, 200);
-			drawText("Level 4", "25px Arial", "center", "#000", 320, 280);
-			drawText("Level 5", "25px Arial", "center", "#000", 320, 360);
-			drawText("Seleção de Capítulos", "25px Arial", "center", "#000", 320, 440);
-			drawText("Menu Principal", "25px Arial", "center", "#000", 320, 520);
-			break;
-
-		case levelOptions.level4 :
-			drawText("Level 1", "25px Arial", "center", "#000", 320, 40);
-			drawText("Level 2", "25px Arial", "center", "#000", 320, 120);
-			drawText("Level 3", "25px Arial", "center", "#000", 320, 200);
-			drawText("Level 4", "25px Arial", "center", "#B0B000", 320, 280);
-			drawText("Level 5", "25px Arial", "center", "#000", 320, 360);
-			drawText("Seleção de Capítulos", "25px Arial", "center", "#000", 320, 440);
-			drawText("Menu Principal", "25px Arial", "center", "#000", 320, 520);
-			break;
-
-		case levelOptions.level5 :
-			drawText("Level 1", "25px Arial", "center", "#000", 320, 40);
-			drawText("Level 2", "25px Arial", "center", "#000", 320, 120);
-			drawText("Level 3", "25px Arial", "center", "#000", 320, 200);
-			drawText("Level 4", "25px Arial", "center", "#000", 320, 280);
-			drawText("Level 5", "25px Arial", "center", "#B0B000", 320, 360);
-			drawText("Seleção de Capítulos", "25px Arial", "center", "#000", 320, 440);
-			drawText("Menu Principal", "25px Arial", "center", "#000", 320, 520);
-			break;
-
-		case levelOptions.backChapter :
-			drawText("Level 1", "25px Arial", "center", "#000", 320, 40);
-			drawText("Level 2", "25px Arial", "center", "#000", 320, 120);
-			drawText("Level 3", "25px Arial", "center", "#000", 320, 200);
-			drawText("Level 4", "25px Arial", "center", "#000", 320, 280);
-			drawText("Level 5", "25px Arial", "center", "#000", 320, 360);
-			drawText("Seleção de Capítulos", "25px Arial", "center", "#B0B000", 320, 440);
-			drawText("Menu Principal", "25px Arial", "center", "#000", 320, 520);
-			break;
-
-		case levelOptions.backMenu :
-			drawText("Level 1", "25px Arial", "center", "#000", 320, 40);
-			drawText("Level 2", "25px Arial", "center", "#000", 320, 120);
-			drawText("Level 3", "25px Arial", "center", "#000", 320, 200);
-			drawText("Level 4", "25px Arial", "center", "#000", 320, 280);
-			drawText("Level 5", "25px Arial", "center", "#000", 320, 360);
-			drawText("Seleção de Capítulos", "25px Arial", "center", "#000", 320, 440);
-			drawText("Menu Principal", "25px Arial", "center", "#B0B000", 320, 520);
-			break;
-	}
+	loadButton(270, 18, 100, 30, "#FFF", "Level 1", 320, 40, "#000");
+	loadButton(270, 98, 100, 30, "#FFF", "Level 2", 320, 120, "#000");
+	loadButton(270, 178, 100, 30, "#FFF", "Level 3", 320, 200, "#000");
+	loadButton(270, 258, 100, 30, "#FFF", "Level 4", 320, 280, "#000");
+	loadButton(270, 338, 100, 30, "#FFF", "Level 5", 320, 360, "#000");
+	loadButton(190, 418, 260, 30, "#FFF", "Selecao de Capitulos", 320, 440, "#000");
+	loadButton(230, 498, 180, 30, "#FFF", "Menu Principal", 320, 520, "#000");
 }
 
 function drawWinScreen(optionSelected) {
 	drawRectangle(0, 0, 640, 560, 2, "#000", true, "#FFF");
 	drawText("Parabéns você venceu!", "35px Arial", "center", "#000", 320, 200);
-	drawText("Menu Principal", "25px Arial", "center", "#B0B000", 320, 275);
+	loadButton(230, 253, 180, 30, "#FFF", "Menu Principal", 320, 275, "#000");
 }
 
 function getMapName(filename){
