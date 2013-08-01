@@ -37,8 +37,10 @@ function buttonUpdate(){
 		if (isOver(buttons[i])){
 			setButtonColor("#FF0000", buttons[i]);
 			clickHandler(buttons[i]);
+			break;
 		}
 	}
+	buttons = [];
 
 }
 
@@ -103,6 +105,5 @@ function nextStep(button){
 	}else if (button.text == "T1"){
 		checkAddTower();
 	}
-	buttons = [];
 
 }
