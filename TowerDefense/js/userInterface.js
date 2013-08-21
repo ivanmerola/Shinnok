@@ -41,9 +41,6 @@ function drawMenu(optionSelected) {
 	drawRectangle(0, 0, 640, 560, 2, "#000", true, "#FFF");
 	loadButton(280, 203, 80, 30, "#FFF", "Jogar", 320, 225, "#000");
 	loadButton(270, 253, 100, 30, "#FFF", "Opcoes", 320, 275, "#000");
-	var x = [500, 250, 0, 250, 500, 640];
-	var y = [0, 0, 250, 500, 500, 250];
-	//loadPolygonButton(x, y, "#000");
 }
 
 function drawGameOver(optionSelected) {

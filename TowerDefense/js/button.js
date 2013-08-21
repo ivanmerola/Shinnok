@@ -36,6 +36,7 @@ function loadPolygonButton(xpoints, ypoints, color, text, textX, textY, textColo
 
 }
 
+
 function drawButton(button){
 
 	drawRectangle(button.x, button.y, button.width, button.height, 2, "#000", true, button.color);
