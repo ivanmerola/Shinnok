@@ -6,6 +6,9 @@ Autor: Thiago Alves / Orlando Figueiredo / Samuel / Renato / Ivan
 //Indica a possibilidade de se colocar uma torre. True uma torre pode ser colocada naquela posição. False uma torre não pode ser colocada naquela posição
 var placeOk = true;
 var select = 0;
+var date1 = 0;
+var date2 = 0;
+var time = 100;
 
 //Função para carregar uma torre. Parâmetro: posição (x,y), caminho da sprite, largura e altura da imagem, quantidade de frames, frame atual.
 function loadTower(x, y, img, width, height, placeWidth, placeHeight, frameqty, shooting, range, selected) {
@@ -53,10 +56,15 @@ function updateTower(tower, npcs, bullet) {
 		}
 	}
 	if (tower.shooting) {
+		date2 = new Date();
 		if ((tower.actualframe + 1) == tower.frameqty) {
 			tower.actualframe = 0;
-		} else {
+		}else if (date2.getMilliseconds() - date1.getMilliseconds() >= time || 
+			date2.getMilliseconds() - date1.getMilliseconds() <= -time || 
+			date1.getMilliseconds() - date2.getMilliseconds() >= -time || 
+			date1.getMilliseconds() - date2.getMilliseconds() <= time){
 			tower.actualframe++;
+			date1 = new Date();
 		}
 	} else {
 		tower.actualframe = 0;
@@ -107,6 +115,7 @@ function highlightPlaces(tower, towers, bits) {
 				bits.push(bits2);
 				mouseLocked=true;
 				actualState = statesInterface.i;
+				date1 = new Date();
 			}
 		} else {
 			canvas.fillStyle = "rgba(200,0,0,0.5)";
