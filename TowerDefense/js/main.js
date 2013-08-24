@@ -63,7 +63,9 @@ function init() {
 					"js/winScreen.js",
 					"js/chapterSelectScreen.js",
 					"js/levelSelectScreen1.js",
-					"js/button.js"
+					"js/button.js",
+					"maps/chapter1/level1/mapGenerator.js",
+					"maps/chapter1/level1/map2.js"
 				],
 				complete : function () {
 					c = document.getElementById("screen");

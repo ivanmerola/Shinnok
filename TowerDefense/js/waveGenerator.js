@@ -58,7 +58,7 @@ function generateWave(npcs) {
 				//Valores temporários
 				var npcPos = getNPCStartPoint(mapChp1LvL1Name);
 				mapChp1LvL1Npc = loadCharacter(npcPos[0], npcPos[1], mapChp1LvL1NpcWidth, mapChp1LvL1NpcHeight, mapChp1LvL1NpcSprite, keyboard.DOWN);
-				mapChp1LvL1Npcs.push(mapChp1LvL1Npc);
+				map1.npcs.push(mapChp1LvL1Npc);
 				waveGeneratorDefinition[waveGeneratorActualWave][waveGeneratorActualEnemyGroup][1]--;
 				if (waveGeneratorDefinition[waveGeneratorActualWave][waveGeneratorActualEnemyGroup][1] == 0) {
 					waveGeneratorActualEnemyGroup++;
@@ -80,7 +80,7 @@ function generateWave(npcs) {
 				if (allRemoved){
 					if((newTime - waveGeneratorActualTime) > waveGeneratorDelay) {
 						waveGeneratorNextWaveActive = true;
-						mapChp1LvL1ActualWave++;
+						map1.actualWave++;
 					}
 				} else {
 					waveGeneratorActualTime=newTime;

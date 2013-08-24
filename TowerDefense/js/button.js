@@ -153,6 +153,7 @@ function nextStep(text){
 		gameState = gameStates.chp1LvL1;
 		buttons = [];
 		mapChp1LvL1Init();
+		//map2Init();
 	}else if (text == "Level 2"){
 		//gameState = gameStates.chp1LvL2; Not implemented yet.
 	}else if (text == "Level 3"){
