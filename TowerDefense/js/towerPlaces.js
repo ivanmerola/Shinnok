@@ -108,7 +108,7 @@ function highlightPlaces(tower, towers, bits) {
 			canvas.globalAlpha = 0.7;
 			drawTower(canvas, tower);
 			canvas.globalAlpha = 1;
-			if (mouseClicked && mouseInside && !mouseLocked && !hasTower(tower, towers) && bits.last()>0) {
+			if (mouseInside && !mouseLocked && !hasTower(tower, towers) && bits.last()>0) {
 				towers.push(tower);
 				towerOrder(towers);
 				var bits2 = bits.last() - tower.cost;
@@ -192,7 +192,7 @@ function detectNpcInRange(towerx, towery, towerR, npcx, npcy, npcR) {
 
 //Função para verificar se uma torre será adicionada
 function checkAddTower() {
-	if (mouseClicked) {
+	if (isUp()) {
 		if(mousePosX>=273 && mousePosX<=308 && mousePosY>=485 && mousePosY<=515) {				
 			actualState = statesInterface.p;
 			mouseLocked=true;
