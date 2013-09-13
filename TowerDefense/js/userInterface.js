@@ -2,37 +2,124 @@
 Biblioteca javascript utilizada para desenhar a interface de usuário
 Autores: Fernando del Rio / Thiago Alves / Orlando Figueiredo / Samuel / Renato
  */
+ 
+var interface1 = new Image();
+var interface2 = new Image();
+var number0 = new Image();
+var number1 = new Image();
+var number2 = new Image();
+var number3 = new Image();
+var number4 = new Image();
+var number5 = new Image();
+var number6 = new Image();
+var number7 = new Image();
+var number8 = new Image();
+var number9 = new Image();
+interface1.src = "images/interface1-1.png";
+interface2.src = "images/interface1-2.png";
+number0.src = "images/number0.png";
+number1.src = "images/number1.png";
+number2.src = "images/number2.png";
+number3.src = "images/number3.png";
+number4.src = "images/number4.png";
+number5.src = "images/number5.png";
+number6.src = "images/number6.png";
+number7.src = "images/number7.png";
+number8.src = "images/number8.png";
+number9.src = "images/number9.png";
 
 //Função para desenhar a interface que ficará sobre o mapa de uma fase.
 function drawMapInterface(map, bits, life, actualWave, waveQty, selected, actualState) {
-	drawRectangle(0, 0, 640, 40, 2, "#000", true, "#FFF");
-	drawRectangle(0, 520, 640, 40, 2, "#000", true, "#FFF");
-	drawLine(c.width/6, 0, c.width/6, 40, 2, "#000");
-	drawLine(c.width/3, 0, c.width/3, 40, 2, "#000");
-	drawLine(c.width/2, 0, c.width/2, 40, 2, "#000");
-	drawLine(5*c.width/6, 0, 5*c.width/6, 40, 2, "#000");
-	drawText("$"+bits, "25px Arial", "center", "#000", c.width/12, 25);
-	drawText("Vida:"+life, "25px Arial", "center", "#000", c.width/4, 25);
-	drawText("Wave:"+actualWave+"/"+waveQty, "25px Arial", "center", "#000", 5*c.width/12, 25);
-	drawText(getMapName(map), "25px Arial", "center", "#000", 2*c.width/3, 25);
-	//drawText("Menu", "25px Arial", "center", "#000", 11*c.width/12, 25);
-	loadButton((11*c.width/12)-30, 3, 60, 30, "#FFF", "Menu", 11*c.width/12, 25, "#000");
-	//drawText("Menu de opções RODAPÉ", "25px Arial", "center", "#000", 320, 545);
+	canvas.drawImage(interface1, 0, 0, 637, 40);
+	var nums = [];
+	var lifePositions = [150, 170, 190];
+	var bitPositions = [30, 50, 70, 90];
+	var wavePosition = [255];
+	var q1 = Math.floor(bits/100);
+	var r1 = bits % 100;
+	var q2 = Math.floor(r1/10);
+	var r2 = r1 % 10;
+	retrieveNumbers([q1, q2, r2], bitPositions);
+	stringConverter(life, nums, lifePositions);
+	//stringConverter(bits, nums, bitPositions);
+	stringConverter(actualWave, nums, wavePosition);
+	drawText("/", "50px Arial", "center", "#000", 285, 30);
+	canvas.drawImage(number5, 295, 0, 20, 40);
+	canvas.drawImage(interface2, 0, 519, 640, 41);
+	loadButton((11*c.width/12)-35, 3, 70, 30, "#FFF", "Menu", 11*c.width/12, 25, "#000");
 	if (actualState!=statesInterface.s){
-		//drawRectangle(80, 520, 240, 40, 2, "#000", true, "#000");
-		drawLine(c.width/8,520,c.width/8,560,2,"#000");
-		drawLine(c.width/2,520,c.width/2,560,2,"#000");
-		drawLine(c.width/1.5,520,c.width/1.5,560,2,"#000");
-		//drawText("T1", "25px Arial", "center", "#000",290, 550);
-		loadButton(270, 525, 40, 30, "#FFF", "T1", 290, 550, "#000");
+		//drawLine(c.width/8,520,c.width/8,560,2,"#000");
+		//drawLine(c.width/2,520,c.width/2,560,2,"#000");
+		//drawLine(c.width/1.5,520,c.width/1.5,560,2,"#000");
+		loadButton(230, 525, 40, 30, "#FFF", "T1", 250, 550, "#000");
+		loadButton(270, 525, 40, 30, "#FFF", "T2", 290, 550, "#000");
 	}else{
-		drawLine(c.width/8,520,c.width/8,560,2,"#000");
-		drawLine(2*c.width/8,520,2*c.width/8,560,2,"#000");
-		drawLine(3*c.width/8,520,3*c.width/8,560,2,"#000");		
-		drawLine(4*c.width/8,520,4*c.width/8,560,2,"#000");		
-		drawLine(6*c.width/8,520,6*c.width/8,560,2,"#000");
-		//drawCircle(selected.x+16, selected.y+96, selected.range, "rgba(0,200,0,0.5)");	
+		//drawLine(c.width/8,520,c.width/8,560,2,"#000");
+		//drawLine(2*c.width/8,520,2*c.width/8,560,2,"#000");
+		//drawLine(3*c.width/8,520,3*c.width/8,560,2,"#000");		
+		//drawLine(4*c.width/8,520,4*c.width/8,560,2,"#000");		
+		//drawLine(6*c.width/8,520,6*c.width/8,560,2,"#000");	
 	}	
+
+}
+
+function stringConverter(number, nums, positions){
+	var aux = number+"";
+	for(var i = 0; i<aux.length; i++){
+		nums[i] = aux.charAt(i);
+	}
+	retrieveNumbers(nums, positions);
+}
+
+function retrieveNumbers(numbers, positions){
+	if(numbers.length>=0 && numbers[0] == "2"){canvas.drawImage(number2, positions[0], 0, 20, 40);
+	}else if(numbers.length>=0 && numbers[0] == "1"){canvas.drawImage(number1, positions[0], 0, 20, 40);
+	}else if(numbers.length>=1 && numbers[0] == "0" && numbers[1]!="5"){canvas.drawImage(number0, positions[2], 0, 20, 40);
+	}else if(numbers.length>=0 && numbers[0] == "3"){canvas.drawImage(number3, positions[0], 0, 20, 40);
+	}else if(numbers.length>=0 && numbers[0] == "4"){canvas.drawImage(number4, positions[0], 0, 20, 40);
+	}else if(numbers.length>=0 && numbers[0] == "5"){canvas.drawImage(number5, positions[0], 0, 20, 40);
+	}else if(numbers.length>=0 && numbers[0] == "6"){canvas.drawImage(number6, positions[0], 0, 20, 40);
+	}else if(numbers.length>=0 && numbers[0] == "7"){canvas.drawImage(number7, positions[0], 0, 20, 40);
+	}else if(numbers.length>=0 && numbers[0] == "8"){canvas.drawImage(number8, positions[0], 0, 20, 40);
+	}else if(numbers.length>=0 && numbers[0] == "9"){canvas.drawImage(number9, positions[0], 0, 20, 40);
+	}else if(numbers.length>=0 && numbers[0] == "10"){canvas.drawImage(number1, positions[0], 0, 20, 40); 
+	canvas.drawImage(number0, positions[1], 0, 20, 40);
+	canvas.drawImage(number0, positions[2], 0, 20, 40);
+	canvas.drawImage(number0, positions[3], 0, 20, 40);
+	}
+	if(numbers.length>=1 && numbers[1] == "0" && numbers[0] != "0"){canvas.drawImage(number0, positions[1], 0, 20, 40);
+	}else if(numbers.length>=1 && numbers[1] == "1"){canvas.drawImage(number1, positions[1], 0, 20, 40);
+	}else if(numbers.length>=1 && numbers[1] == "2"){canvas.drawImage(number2, positions[1], 0, 20, 40);
+	}else if(numbers.length>=1 && numbers[1] == "3"){canvas.drawImage(number3, positions[1], 0, 20, 40);
+	}else if(numbers.length>=1 && numbers[1] == "4"){canvas.drawImage(number4, positions[1], 0, 20, 40);
+	}else if(numbers.length>=1 && numbers[1] == "5"){canvas.drawImage(number5, positions[1], 0, 20, 40);
+	}else if(numbers.length>=1 && numbers[1] == "6"){canvas.drawImage(number6, positions[1], 0, 20, 40);
+	}else if(numbers.length>=1 && numbers[1] == "7"){canvas.drawImage(number7, positions[1], 0, 20, 40);
+	}else if(numbers.length>=1 && numbers[1] == "8"){canvas.drawImage(number8, positions[1], 0, 20, 40);
+	}else if(numbers.length>=1 && numbers[1] == "9"){canvas.drawImage(number9, positions[1], 0, 20, 40);
+	}
+	if(numbers.length>=2 && numbers[2] == "0" &&!(numbers[0]=="0" && numbers[1]=="0")){canvas.drawImage(number0, positions[2], 0, 20, 40);
+	}else if(numbers.length>=2 && numbers[2] == "1"){canvas.drawImage(number1, positions[2], 0, 20, 40);
+	}else if(numbers.length>=2 && numbers[2] == "2"){canvas.drawImage(number2, positions[2], 0, 20, 40);
+	}else if(numbers.length>=2 && numbers[2] == "3"){canvas.drawImage(number3, positions[2], 0, 20, 40);
+	}else if(numbers.length>=2 && numbers[2] == "4"){canvas.drawImage(number4, positions[2], 0, 20, 40);
+	}else if(numbers.length>=2 && numbers[2] == "5"){canvas.drawImage(number5, positions[2], 0, 20, 40);
+	}else if(numbers.length>=2 && numbers[2] == "6"){canvas.drawImage(number6, positions[2], 0, 20, 40);
+	}else if(numbers.length>=2 && numbers[2] == "7"){canvas.drawImage(number7, positions[2], 0, 20, 40);
+	}else if(numbers.length>=2 && numbers[2] == "8"){canvas.drawImage(number8, positions[2], 0, 20, 40);
+	}else if(numbers.length>=2 && numbers[2] == "9"){canvas.drawImage(number9, positions[2], 0, 20, 40);
+	}
+	if(numbers.length>=3 && numbers[3] == "0"){canvas.drawImage(number0, positions[3], 0, 20, 40);
+	}else if(numbers.length>=3 && numbers[3] == "1"){canvas.drawImage(number1, positions[3], 0, 20, 40);
+	}else if(numbers.length>=3 && numbers[3] == "2"){canvas.drawImage(number2, positions[3], 0, 20, 40);
+	}else if(numbers.length>=3 && numbers[3] == "3"){canvas.drawImage(number3, positions[3], 0, 20, 40);
+	}else if(numbers.length>=3 && numbers[3] == "4"){canvas.drawImage(number4, positions[3], 0, 20, 40);
+	}else if(numbers.length>=3 && numbers[3] == "5"){canvas.drawImage(number5, positions[3], 0, 20, 40);
+	}else if(numbers.length>=3 && numbers[3] == "6"){canvas.drawImage(number6, positions[3], 0, 20, 40);
+	}else if(numbers.length>=3 && numbers[3] == "7"){canvas.drawImage(number7, positions[3], 0, 20, 40);
+	}else if(numbers.length>=3 && numbers[3] == "8"){canvas.drawImage(number8, positions[3], 0, 20, 40);
+	}else if(numbers.length>=3 && numbers[3] == "9"){canvas.drawImage(number9, positions[3], 0, 20, 40);
+	}
 
 }
 

@@ -1,5 +1,6 @@
 var buttons = [];
 var polygons = [];
+var tower1;
 
 function loadButton(x, y, width, height, color, text, textX, textY, textColor){
 
@@ -164,6 +165,10 @@ function nextStep(text){
 		//gameState = gameStates.chp1LvL5; Not implemented yet.
 	}else if (text == "T1"){
 		checkAddTower();
+		tower1 = true;
+	}else if(text == "T2"){
+		checkAddTower();
+		tower1 = false;
 	}
 
 }

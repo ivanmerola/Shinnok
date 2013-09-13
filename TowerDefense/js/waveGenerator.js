@@ -57,7 +57,7 @@ function generateWave(npcs) {
 			if ((newTime - waveGeneratorActualTime) > waveGeneratorDefinition[waveGeneratorActualWave][waveGeneratorActualEnemyGroup][2]) {
 				//Valores temporários
 				var npcPos = getNPCStartPoint(mapChp1LvL1Name);
-				mapChp1LvL1Npc = loadCharacter(npcPos[0], npcPos[1], mapChp1LvL1NpcWidth, mapChp1LvL1NpcHeight, mapChp1LvL1NpcSprite, keyboard.DOWN);
+				mapChp1LvL1Npc = loadCharacter(npcPos[0], npcPos[1], mapChp1LvL1NpcWidth, mapChp1LvL1NpcHeight, map1.npcSprite, keyboard.DOWN);
 				map1.npcs.push(mapChp1LvL1Npc);
 				waveGeneratorDefinition[waveGeneratorActualWave][waveGeneratorActualEnemyGroup][1]--;
 				if (waveGeneratorDefinition[waveGeneratorActualWave][waveGeneratorActualEnemyGroup][1] == 0) {
@@ -89,7 +89,7 @@ function generateWave(npcs) {
 				if ((newTime - waveGeneratorActualTime) > waveGeneratorDefinition[waveGeneratorActualWave][waveGeneratorActualEnemyGroup][2]) {
 					//Valores temporários
 					var npcPos = getNPCStartPoint(mapChp1LvL1Name);
-					mapChp1LvL1Npc = loadCharacter(npcPos[0], npcPos[1], mapChp1LvL1NpcWidth, mapChp1LvL1NpcHeight, mapChp1LvL1NpcSprite, keyboard.DOWN);
+					mapChp1LvL1Npc = loadCharacter(npcPos[0], npcPos[1], mapChp1LvL1NpcWidth, mapChp1LvL1NpcHeight, map1.npcSprite, keyboard.DOWN);
 					npcs.push(mapChp1LvL1Npc);
 					waveGeneratorDefinition[waveGeneratorActualWave][waveGeneratorActualEnemyGroup][1]--;
 					if (waveGeneratorDefinition[waveGeneratorActualWave][waveGeneratorActualEnemyGroup][1] == 0) {

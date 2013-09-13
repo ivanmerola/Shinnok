@@ -123,7 +123,7 @@ function updateNPC(character) {
 		character.walking = true;
 	}
 	character.imgPosition++;
-	if (character.imgPosition > 2) {
+	if (character.imgPosition > 4) {
 		character.imgPosition = 0;
 	}
 	var objectGroups = xmlDoc.getElementsByTagName("objectgroup");

@@ -19,7 +19,7 @@ function createMap(map, npcs, towers, id, npc, tower, bits, bit0, life, waveQty,
 }
 
 function initAttributes(name, npcSprite, npcWidth, npcHeight, towerSprite, towerWidth,
-towerHeight, towerPlaceWidth, towerPlaceHeight, towerQtyFrames, range, bullet){
+towerHeight, towerPlaceWidth, towerPlaceHeight, towerQtyFrames, range){
 
 	var map = {};
 	map.name = name;
@@ -33,7 +33,6 @@ towerHeight, towerPlaceWidth, towerPlaceHeight, towerQtyFrames, range, bullet){
 	map.towerPlaceHeight = towerPlaceHeight;
 	map.towerQtyFrames = towerQtyFrames;
 	map.range = range;
-	map.bullet = bullet;
 	maps.push(map);
 	return map;
 

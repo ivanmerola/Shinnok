@@ -11,7 +11,7 @@ var date2 = 0;
 var time = 100;
 
 //Função para carregar uma torre. Parâmetro: posição (x,y), caminho da sprite, largura e altura da imagem, quantidade de frames, frame atual.
-function loadTower(x, y, img, width, height, placeWidth, placeHeight, frameqty, shooting, range, selected) {
+function loadTower(x, y, img, width, height, placeWidth, placeHeight, frameqty, shooting, range, selected, bullet) {
 	var tower = {};
 	tower.x = x;
 	tower.y = y;
@@ -28,6 +28,8 @@ function loadTower(x, y, img, width, height, placeWidth, placeHeight, frameqty, 
 	tower.selected = selected;
 	tower.attack = 10;
 	tower.cost = 50;
+	tower.small = false;
+	tower.bullet = bullet;
 	return tower;
 }
 
@@ -42,14 +44,14 @@ function drawTower(canvas, tower) {
 }
 
 //Função para atualizar o estado de uma torre. Parâmetro: a torre que será atualizada.
-function updateTower(tower, npcs, bullet) {
+function updateTower(tower, npcs) {
 	tower.shooting = false;
 	for (var i = 0; i < npcs.length; i++) {
 		if (!npcs[i].removed) {
 			var detected = detectNpcInRange(tower.x + (tower.width / 2), tower.y + tower.height + 40, tower.range, npcs[i].posX + npcs[i].chrWidth / 2, npcs[i].posY + npcs[i].chrHeight / 2 + 40, npcs[i].chrWidth / 2);
 			if (detected) {
 				tower.shooting = true;
-				updateBulletPosition(bullet, npcs[i], tower);
+				updateBulletPosition(tower.bullet, npcs[i], tower);
 				npcs[i].life -= tower.attack;
 				break;
 			}
@@ -73,18 +75,42 @@ function updateTower(tower, npcs, bullet) {
 
 function updateBulletPosition(bullet, enemy, tower){
 
+	var smallTower;
+	if(tower.small){
+		smallTower = 20
+	}else{
+		smallTower = 0
+	}
+
 	//Laser shot.
 	if(bullet.width == 0){
-		drawLine(tower.x + (tower.width / 2), tower.y + (tower.height), enemy.posX + (enemy.chrWidth / 4), enemy.posY + (enemy.chrHeight * 1.5), 2, "rgb(255,255,0)");
-
+		xB = [4, 8, 16, 24, 28, 16];
+		yB = [10, 15, 16, 15, 10, 0];
+		if(enemy.posY == tower.y){
+			if(enemy.posX < tower.x){
+				drawLine(tower.x + xB[0], tower.y + yB[0]+ tower.height, enemy.posX + (enemy.chrWidth / 4), enemy.posY + (enemy.chrHeight * 1.5), 2, "rgb(255,255,0)");
+			}else if (enemy.posX > tower.x){
+				drawLine(tower.x + xB[4], tower.y + yB[4]+ tower.height, enemy.posX + (enemy.chrWidth / 4), enemy.posY + (enemy.chrHeight * 1.5), 2, "rgb(255,255,0)");
+			}else{
+				drawLine(tower.x + xB[5], tower.y + yB[5]+ tower.height, enemy.posX + (enemy.chrWidth / 4), enemy.posY + (enemy.chrHeight * 1.5), 2, "rgb(255,255,0)");
+			}
+		}else{
+			if(enemy.posX < tower.x){
+				drawLine(tower.x + xB[1], tower.y + yB[1]+ tower.height, enemy.posX + (enemy.chrWidth / 4), enemy.posY + (enemy.chrHeight * 1.5), 2, "rgb(255,255,0)");
+			}else if(enemy.posX > tower.x){
+				drawLine(tower.x + xB[3], tower.y + yB[3]+ tower.height, enemy.posX + (enemy.chrWidth / 4), enemy.posY + (enemy.chrHeight * 1.5), 2, "rgb(255,255,0)");
+			}else{
+				drawLine(tower.x + xB[2], tower.y + yB[2]+ tower.height, enemy.posX + (enemy.chrWidth / 4), enemy.posY + (enemy.chrHeight * 1.5), 2, "rgb(255,255,0)");
+			}
+		}
 	//Initial position
 	}else if(select == 0){
-		canvas.drawImage(bullet, tower.x + (tower.width / 2), tower.y + (tower.height), bullet.width, bullet.height);
+		canvas.drawImage(bullet, tower.x + (tower.width / 2), tower.y + (tower.height)+smallTower, bullet.width, bullet.height);
 
 	//Middle position
 	}else if (select == 1){
 		var x = ((tower.x + (tower.width / 2))+(enemy.posX + (enemy.chrWidth / 4)))/2;
-		var y = ((tower.y + (tower.height))+(enemy.posY + enemy.chrHeight))/2;
+		var y = ((tower.y + (tower.height)+smallTower)+(enemy.posY + enemy.chrHeight))/2;
 		canvas.drawImage(bullet, x, y, bullet.width, bullet.height);
 
 	//Hit the target
@@ -109,6 +135,12 @@ function highlightPlaces(tower, towers, bits) {
 			drawTower(canvas, tower);
 			canvas.globalAlpha = 1;
 			if (mouseInside && !mouseLocked && !hasTower(tower, towers) && bits.last()>0) {
+				//if (tower1 && !tower1){
+					var eliminate = ".png";
+					tower.image.src = tower.image.src.replace(eliminate, '-pin.png');
+					//tower.image.src = "images/novasTorres/torre-2-2-2-pin.png"
+					tower.small = true;
+				//}
 				towers.push(tower);
 				towerOrder(towers);
 				var bits2 = bits.last() - tower.cost;
@@ -193,7 +225,7 @@ function detectNpcInRange(towerx, towery, towerR, npcx, npcy, npcR) {
 //Função para verificar se uma torre será adicionada
 function checkAddTower() {
 	if (isUp()) {
-		if(mousePosX>=273 && mousePosX<=308 && mousePosY>=485 && mousePosY<=515) {				
+		if(mousePosX>=230 && mousePosX<=310 && mousePosY>=485 && mousePosY<=515) {				
 			actualState = statesInterface.p;
 			mouseLocked=true;
 		}			

@@ -33,6 +33,21 @@ function drawLine(x0, y0, x, y, lineWidth, color) {
 	canvas.stroke();
 }
 
+function drawLineWithShadows(x0, y0, x, y, lineWidth, color){
+
+	canvas.lineWidth = lineWidth;
+	canvas.strokeStyle = color;
+	canvas.beginPath();
+	canvas.moveTo(x0, y0);
+	canvas.lineTo(x, y);
+	//canvas.shadowColor = "red";
+    //canvas.shadowBlur = 40;
+    //canvas.shadowOffsetX = x0;
+    //canvas.shadowOffsetY = y0;
+	canvas.stroke();
+
+}
+
 //Função para desenhar um retângulo na tela.Parâmetros: Coordenadas do retângulo (ponto (x,y), largura, altura), espessura da linha, cor da linha, valor booleano indicando se o retângulo deve ou não ser preenchido com uma cor, cor que irá preencher o retângulo.
 function drawRectangle(x, y, width, height, lineWidth, lineColor, fillRectangle, color) {
 	if (fillRectangle) {

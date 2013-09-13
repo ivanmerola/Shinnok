@@ -15,14 +15,14 @@ mapChp1LvL1NpcWidth = 32, mapChp1LvL1NpcHeight = 32;
 
 //Configurações para as torres.
 var mapChp1LvL1Towers;
-var mapChp1LvL1Tower, mapChp1LvL1TowerSprite = "images/towers/torre-2-3invert.png",
+var mapChp1LvL1Tower, mapChp1LvL1TowerSprite = "images/novasTorres/torre-2-1-1.png",
 mapChp1LvL1TowerWidth = 32, mapChp1LvL1TowerHeight = 63,
 mapChp1LvL1TowerPlaceWidth = 1, mapChp1LvL1TowerPlaceHeight = 1,
 mapChp1LvL1TowerQtyFrames=7; mapChp1LvL1Range = 50; 
 var mapChp1LvL1Bullet = new Image();
 
 //Bullet shot. Comment the line below if you want a laser shot.
-//mapChp1LvL1Bullet.src = "images/bullets/bullet.png";
+mapChp1LvL1Bullet.src = "images/bullets/bullet.png";
 
 //Configurações para a interface.
 
@@ -35,8 +35,8 @@ var actualState = statesInterface.i;
 
 function mapChp1LvL1Init() {
 	if (mapChp1LvL1 == undefined) {
-		map1 = initAttributes("maps/chapter1/level1/mapChp1LvL1.tmx", "images/characteres/personagem1.png", 32, 32, "images/towers/torre-2-3invert.png",
-		32, 63, 1, 1, 7, 50, new Image());
+		map1 = initAttributes("maps/chapter1/level1/mapChp1LvL1.tmx", "images/characteres/Fruto3.png", 32, 32, "images/novasTorres/torre-2-2-2.png",
+		32, 63, 1, 1, 3, 50);
 		mapChp1LvL1 = loadMap(map1.name);
 		var npcPos = getNPCStartPoint(map1.name);
 		map1 = createMap(map1, [], [], mapChp1LvL1, loadCharacter(npcPos[0], npcPos[1], map1.npcWidth, map1.npcHeight, map1.npcSprite, keyboard.DOWN),
@@ -87,8 +87,14 @@ function mapChp1LvL1Render() {
 	}
 	//drawCharacter(canvas, character1);
 	//updateCharacter(character1, down, left, right, up);
-	checkAddTower();
-	map1.tower = loadTower(xTileMouseOver * 32, yTileMouseOver * 32 - 32, map1.towerSprite, map1.towerWidth, map1.towerHeight, map1.towerPlaceWidth, map1.towerPlaceHeight, map1.towerQtyFrames, false, map1.range, false);
+	//checkAddTower();
+	if(tower1){
+		map1.tower = loadTower(xTileMouseOver * 32, yTileMouseOver * 32 - 32, map1.towerSprite, map1.towerWidth, map1.towerHeight, 
+		map1.towerPlaceWidth, map1.towerPlaceHeight, map1.towerQtyFrames, false, map1.range, false, mapChp1LvL1Bullet);
+	}else{
+		map1.tower = loadTower(xTileMouseOver * 32, yTileMouseOver * 32 - 32, mapChp1LvL1TowerSprite, mapChp1LvL1TowerWidth, mapChp1LvL1TowerHeight, 
+		mapChp1LvL1TowerPlaceWidth, mapChp1LvL1TowerPlaceHeight, 1, false, mapChp1LvL1Range, false, new Image());
+	}
 	if (map1.towers.length == 0 && (actualState == statesInterface.p)) {
 		highlightPlaces(map1.tower, map1.towers, map1.bits);
 	} else {
@@ -101,7 +107,7 @@ function mapChp1LvL1Render() {
 				}
 			}
 			drawTower(canvas, map1.towers[i]);
-			updateTower(map1.towers[i],map1.npcs, map1.bullet);
+			updateTower(map1.towers[i],map1.npcs);
 		}
 		if (!highlight && (actualState == statesInterface.p)) {
 			highlightPlaces(map1.tower, map1.towers, map1.bits);
@@ -125,7 +131,6 @@ function mapChp1LvL1Update(){
 		var detected = detectTowerSelected(map1.towers);
 	}
 
-	//buttonUpdate();
 	drawMapInterface(map1.name, map1.bits.last(), map1.life, map1.actualWave, map1.waveQty, detected, actualState);
 	buttonUpdate();
 
